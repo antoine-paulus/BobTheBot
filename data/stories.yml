@@ -1,0 +1,95 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID d86f1bf70f604bb0873c09a8f91158d7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID fa788b7fde16487ab195f75d6114d477
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID 7bbb4009fdb440f4bebe0e5b18f4f832
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID c6b8c805c28d4fceb0ac50996c6d2029
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: deny
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID ea39518fe4d5487e9dd4707f45560619
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: deny
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID 98b1ac05e630486f95ca91712772dbaa
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: Story from Conversation ID 641f823c082541e9bf85ae8d33d725a7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - intent: thank_you
+  - action: utter_welcome
