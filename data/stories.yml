@@ -1,62 +1,55 @@
 version: "2.0"
-
 stories:
-
 - story: geography
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: geography
-  - action: utter_connexion_geography
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
-  
 - story: geography_help
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: geography
-  - action: utter_connexion_geography
+  - action: action_API
   - intent: help_activity
   - action: utter_help_geography
   - intent: goodbye
   - action: utter_goodbye
-
 - story: nasa
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: nasa
-  - action: utter_connexion_nasa
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
-
 - story: nasa_help
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: nasa
-  - action: utter_connexion_nasa
+  - action: action_API
   - intent: help_activity
   - action: utter_help_nasa
   - intent: goodbye
   - action: utter_goodbye
-  
 - story: trivia
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: trivia
-  - action: utter_connexion_trivia
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
-
 - story: trivia_help
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: trivia
-  - action: utter_connexion_trivia
+  - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
   - intent: goodbye
