@@ -2,7 +2,7 @@ import pycountry
 from random import randint
 import requests
 import json
-import keys
+from actions.API.keys import *
 
 
 class GeoApiHandler:
@@ -25,7 +25,7 @@ class GeoApiHandler:
 
         data = {}
         headers= {
-        "apikey": keys.GEO_API_KEY
+        "apikey": GEO_API_KEY
         }
         response = requests.get(f"https://api.apilayer.com/geo/country/name/{country_name}", headers=headers)
         if response.status_code == 200:
@@ -40,8 +40,6 @@ class GeoApiHandler:
     
 
     def generate_question(self) -> str:
-        """"""
-
         #Get a random country:
         country_name = self._get_random_country()
         country_data = self._get_country_data(country_name)

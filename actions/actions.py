@@ -10,19 +10,14 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
+from actions.API.geo_api_handler import *
 
 class ActionAPI(Action):
-
-    iter = 0
-
-    #geoAPI = ...
-    #triviaAPI = ...
-    #nasaAPI = ...
 
     def __init__(self) -> None:
         super().__init__()
         self.iter = 0
-        #self.geoAPI = ...
+        self.geoAPI = GeoApiHandler("Default_name")
         #self.triviaAPI = ...
         #self.nasaAPI = ...
 
@@ -34,16 +29,23 @@ class ActionAPI(Action):
 
         print(f"\nintent = {intent}\n")
 
-        if intent == "geo" :
-            pass
+        if intent == "geography" :
+            question = self.geoAPI.generate_question()
+            print(question)
+            dispatcher.utter_message(text=question)
+
         elif intent == "trivia" :
-            pass
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
+
         elif intent == "nasa" :
-            pass
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
+
+        else:
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
 
         self.iter += 1
-        dispatcher.utter_message(text=f"Hello World! n°{self.iter}")
+        
 
         return []
 
