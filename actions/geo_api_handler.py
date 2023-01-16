@@ -4,6 +4,7 @@ import requests
 import json
 import keys
 
+
 class GeoApiHandler:
 
     def __init__(self, name : str):
@@ -15,7 +16,8 @@ class GeoApiHandler:
 
     def _get_random_country(self):
         """Return a random country name from all available countries"""
-        return self.countries_list[randint(0, len(self.countries_list - 1))]
+
+        return self._countries_list[randint(0, len(self._countries_list ) - 1)].name
 
 
     def _get_country_data(self, country_name : str) -> dict:
@@ -28,11 +30,12 @@ class GeoApiHandler:
         response = requests.get(f"https://api.apilayer.com/geo/country/name/{country_name}", headers=headers)
         if response.status_code == 200:
             response_dict = response.json()[0]
-        data["name"] = response_dict["name"]
-        data["capital"] = response_dict["capital"]
-        data["continent"] = response_dict["region"]
-        data["currencies"] = response_dict["currencies"]["name"]
-        data["language"] = response_dict["languages"]
+            data["capital"] = response_dict["capital"]
+            data["continent"] = response_dict["region"]
+            data["currencies"] = response_dict["currencies"][0]["name"]
+            data["language"] = response_dict["languages"][0]["name"]
+        else:
+            print(f"An error occured when retrieving data for {country_name} country")
         return data
     
 
@@ -42,7 +45,7 @@ class GeoApiHandler:
         #Get a random country:
         country_name = self._get_random_country()
         country_data = self._get_country_data(country_name)
-        data_type_list = country_data.keys()
+        data_type_list = list(country_data.keys())
         data_type = data_type_list[randint(0, len(data_type_list) - 1)]
         self.current_question = f"What is the {data_type} of {country_name} ?"
         self.current_answer = country_data[data_type]
@@ -59,6 +62,9 @@ class GeoApiHandler:
             self.current_user_score = 0
             return f"No sorry, the correct answer is {self.current_answer}"
 
+
 if __name__ == '__main__':
-    geo_handler = GeoApiHandler()
-    geo_handler.get_country_data("France")
+    geo_handler = GeoApiHandler("Bob")
+    print(geo_handler.generate_question())
+    response = str(input())
+    print(geo_handler.check_answer(response))
