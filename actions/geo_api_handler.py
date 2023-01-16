@@ -6,10 +6,11 @@ import keys
 
 class GeoApiHandler:
 
-    def __init__(self):
+    def __init__(self, name : str):
         self._countries_list = list(pycountry.countries)
         self.current_question = ""
         self.current_answer = ""
+        self.current_user_score = 0
 
 
     def _get_random_country(self):
@@ -52,9 +53,11 @@ class GeoApiHandler:
         """"""
 
         if self.current_answer in given_answer :
-            return "Great this is the good answer !"
+            self.current_user_score += 1
+            return f"Great this is the good answer ! Your score is {self.current_user_score}"
         else:
-            return f"No, the correct answer is {self.current_answer}"
+            self.current_user_score = 0
+            return f"No sorry, the correct answer is {self.current_answer}"
 
 if __name__ == '__main__':
     geo_handler = GeoApiHandler()
