@@ -11,6 +11,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
 from actions.API.geo_api_handler import *
+from BobDisplay.display import *
 
 class ActionAPI(Action):
 
@@ -18,6 +19,10 @@ class ActionAPI(Action):
         super().__init__()
         self.iter = 0
         self.geoAPI = GeoApiHandler("Default_name")
+        self.display_queue = multiprocessing.Queue()
+        display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
+        display_process.start()
+
         #self.triviaAPI = ...
         #self.nasaAPI = ...
 
@@ -35,9 +40,11 @@ class ActionAPI(Action):
             dispatcher.utter_message(text=question)
 
         elif intent == "trivia" :
+            input_queue.put(b"trivia")
             dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         elif intent == "nasa" :
+            self.display_queue.put(b"nasa")
             dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         else:
