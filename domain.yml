@@ -1,15 +1,38 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- thank_you
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- thank_you:
+    use_entities: true
+- help_nasa:
+    use_entities: true
+- help:
+    use_entities: true
+- nasa:
+    use_entities: true
+- trivia:
+    use_entities: true
+- try_other_activity:
+    use_entities: true
+entities: []
+slots: {}
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -27,3 +50,7 @@ responses:
   utter_welcome:
   - text: you are very welcome
   - text: you are welcome
+actions:
+- action_API
+forms: {}
+e2e_actions: []
