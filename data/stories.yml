@@ -2,94 +2,62 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+- story: geography
   steps:
   - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: utter_greet_global
+  - intent: geography
+  - action: utter_connexion_geography
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: geography_help
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: geography
+  - action: utter_connexion_geography
+  - intent: help_activity
+  - action: utter_help_geography
+  - intent: goodbye
+  - action: utter_goodbye
 
-- story: sad path 1
+- story: nasa
   steps:
   - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - action: utter_greet_global
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - intent: goodbye
+  - action: utter_goodbye
 
-- story: sad path 2
+- story: nasa_help
   steps:
   - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-  
-- story: Story from Conversation ID d86f1bf70f604bb0873c09a8f91158d7
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - action: utter_greet_global
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - intent: help_activity
+  - action: utter_help_nasa
   - intent: goodbye
   - action: utter_goodbye
   
-- story: Story from Conversation ID fa788b7fde16487ab195f75d6114d477
+- story: trivia
   steps:
   - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: utter_greet_global
+  - intent: trivia
+  - action: utter_connexion_trivia
   - intent: goodbye
   - action: utter_goodbye
-  
-- story: Story from Conversation ID 7bbb4009fdb440f4bebe0e5b18f4f832
+
+- story: trivia_help
   steps:
   - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: utter_greet_global
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - intent: help_activity
+  - action: utter_help_trivia
   - intent: goodbye
   - action: utter_goodbye
-  
-- story: Story from Conversation ID c6b8c805c28d4fceb0ac50996c6d2029
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: deny
-  - action: utter_happy
-  - intent: goodbye
-  - action: utter_goodbye
-  
-- story: Story from Conversation ID ea39518fe4d5487e9dd4707f45560619
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: deny
-  - action: utter_happy
-  - intent: goodbye
-  - action: utter_goodbye
-  
-- story: Story from Conversation ID 98b1ac05e630486f95ca91712772dbaa
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-  - intent: goodbye
-  - action: utter_goodbye
-  
-- story: Story from Conversation ID 641f823c082541e9bf85ae8d33d725a7
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-  - intent: thank_you
-  - action: utter_welcome

@@ -96,11 +96,10 @@ nlu:
     - thank you
     - thanks
     - many thanks
-- intent: help
+- intent: help_bot
   examples: |
     - what can you do?
     - can you tell me what do you do?
-    - help
     - tell me what do you do
 - intent: try_other_activity
   examples: |
@@ -115,14 +114,11 @@ nlu:
     - show me the latest discovery
     - show le the discovery of NASA
     - I would like to change to the NASA
-- intent: help_nasa
+- intent: help_activity
   examples: |
     - how it works
     - can you explain me how it works
-    - I want to see an image of NASA
-    - show me the latest discovery
-    - show le the discovery of NASA
-    - I would like to change to the NASA
+    - I don't understand how it works
 - intent: trivia
   examples: |
     - trivia
@@ -130,6 +126,14 @@ nlu:
     - I want to play the trivia
     - let's play to trivia
     - I would like to change to the trivia
+- intent: geography
+  examples: |
+    - geography
+    - I would like to change to geography activity
+    - I want to play the geo
+    - let's to learn the countries
+    - I would like to change to the geography
+
 
     
 
