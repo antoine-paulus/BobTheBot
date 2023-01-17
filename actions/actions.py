@@ -41,16 +41,29 @@ class ActionAPI(Action):
 
         print(f"\nintent = {intent}\n")
 
-        if intent == "geography" :
+        if intent == "geography":
             question = self.geoAPI.generate_question()
             print(question)
             dispatcher.utter_message(text=question)
 
-        elif intent == "trivia" :
+        elif intent == "trivia":
             self.display_queue.put(b"trivia")
+
+            self.triviaAPI.generate_question()
+            question = self.triviaAPI.get_question()
+            dispatcher.utter_message(text=question)
+
+            choices = self.triviaAPI.get_choices()
+            dispatcher.utter_message(text=f"A. {choices[0]}, B. {choices[1]}, C. {choices[2]}, D. {choices[3]}")
+
+            # answer =  --> how to get an answer ???
+            result = self.triviaAPI.get_result(answer='B')
+            dispatcher.utter_message(text=result[2])
+            # increment_user_score()
+
             dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
-        elif intent == "nasa" :
+        elif intent == "nasa":
             self.display_queue.put(b"nasa")
             image = self.nasaAPI.get_image()
             print(image)

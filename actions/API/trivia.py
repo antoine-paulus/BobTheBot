@@ -24,21 +24,25 @@ class Trivia:
         self.correctAnswer_1234 = ''
         self.difficulty = difficulty
         self.category = category
+        self.all_categories = json.loads(requests.get('https://the-trivia-api.com/api/categories').text).keys()
         self.categories = []
-        self.userAnswer = ''
         self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
         if self.category != '':
             self.url += f'&categories={self.category}'
 
-    def load_data(self):
+    def get_question(self):
+        return self.question
+
+    def get_choices(self):
+        return self.choices
+
+    def generate_question(self, difficulty='easy', category=''):
+        self.update_settings(difficulty, category)
         data = requests.get(self.url)
         json_data = json.loads(data.text)[0]
         self.question = json_data['question']
         self.correctAnswer = json_data['correctAnswer']
         self.incorrectAnswers = json_data['incorrectAnswers']
-        self.category = json_data['category']
-        self.difficulty = json_data['difficulty']
-        self.all_categories = json.loads(requests.get('https://the-trivia-api.com/api/categories').text).keys()
         self.choices = self.incorrectAnswers
         self.choices.append(self.correctAnswer)
         random.shuffle(self.choices)
@@ -47,14 +51,29 @@ class Trivia:
                 self.correctAnswer_1234 = str(i+1)
                 self.correctAnswer_ABCD = to_letter(i)
 
-    def get_question(self):
-        return self.question
+    def get_result(self, answer):
+        if answer == self.correctAnswer or answer == self.correctAnswer_ABCD \
+                or answer == self.correctAnswer_1234:
+            if self.difficulty == 'easy':
+                return True, 1, "Yes, your answer is correct! You have earned 1 point."
+            elif self.difficulty == 'medium':
+                return True, 2, "Yes, your answer is correct! You have earned 2 points."
+            else:
+                return True, 3, "Yes, your answer is correct! You have earned 3 points."
+        else:
+            return False, 0, f"Ops, your answer is wrong! The correct answer was : {self.correctAnswer}"
 
-    def get_choices(self):
-        return self.choices
+        def get_all_categories(self):
+            return self.all_categories
 
-    def get_correct_answer(self):
-        return self.correctAnswer
+        def update_settings(self, difficulty, category):
+            self.difficulty = difficulty
+            self.category = category
+            self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
+            if self.category != '':
+                self.url += f'&categories={self.category}'
+
+"""
 
     def get_correct_answer_ABCD(self):
         return self.correctAnswer_ABCD
@@ -64,19 +83,7 @@ class Trivia:
 
     def get_incorrect_answers(self):
         return self.incorrectAnswers
-
-    def set_user_answer(self, answer):
-        self.userAnswer = answer
-
-    def get_all_categories(self):
-        return self.all_categories
-
-    def get_user_answer(self):
-        return self.userAnswer
-
-    def verify_answer(self):
-        return self.userAnswer == self.correctAnswer or self.userAnswer == self.correctAnswer_ABCD or self.userAnswer == self.correctAnswer_1234
-
+"""
 
 '''
 # Tests
@@ -95,3 +102,4 @@ if not(trivia.verify_answer()):
     print(f"The correct answer was : {trivia.get_correct_answer()} or {trivia.get_correct_answer_ABCD()} or {trivia.get_correct_answer_1234()}")
 # Tests : OK
 '''
+
