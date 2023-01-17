@@ -30,9 +30,6 @@ class Trivia:
         if self.category != '':
             self.url += f'&categories={self.category}'
 
-    # todo
-    # figure out how to change the difficulty of questions
-
     def load_data(self):
         data = requests.get(self.url)
         json_data = json.loads(data.text)[0]
