@@ -17,18 +17,24 @@ intents:
 - trivia
 - geography
 - give_name
+- response_trivia
 entities:
 - name
+- trivia_answer
 slots:
   name:
+    type: text
+    influence_conversation: true
+  trivia_answer:
     type: text
     influence_conversation: true
 responses:
   utter_greet_global:
   - text: Hello, my name is Bob, your assitant chatbot.  What is your name?
   utter_select_activity:
-  - text: I can propose you different activities, for example show you the latest
-      discovery of NASA, play a geo game or trivia.What do you want to do?
+  - text: Okay {name}, I can propose you different activities, for example show you
+      the latest discovery of NASA, play a geo game or trivia.What do you want to
+      do?
   utter_greet_light:
   - text: Hello, my name is Bob. What do you want to do ?
   utter_goodbye:
@@ -39,18 +45,22 @@ responses:
   - text: you are very welcome
   - text: you are welcome
   utter_help_bot:
-  - text: I can show different activities, for example play a geo game, do some trivia or show you the latest NASA discovery.
+  - text: I can show different activities, for example play a geo game, do some trivia
+      or show you the latest NASA discovery.
   utter_help_nasa:
   - text: I can show you the latest NASA discovery and read you the description.
   utter_help_trivia:
   - text: We can do some trivia. There are many subject and levels of difficulty.
   utter_help_geography:
-  - text: You can test your knowledge in geograph. I will tell you the country name and you need to gess the capital.
+  - text: You can test your knowledge in geograph. I will tell you the country name
+      and you need to gess the capital.
   utter_connexion_geography:
   - text: let's to learn some capital of countries!
   utter_connexion_nasa:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: let's play trivia!
+  utter_trivia_API:
+  - text: What is the ...? The answers are A) B) C) D)
 actions:
 - action_API
