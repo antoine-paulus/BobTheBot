@@ -24,7 +24,9 @@ class ActionAPI(Action):
         # API
         self.geoAPI = GeoApiHandler("Default_name")
         self.nasaAPI = Nasa()
+        self.nasaAPI.load_data()
         self.triviaAPI = Trivia()
+        self.triviaAPI.load_data()
 
 
         # Pygame display
@@ -49,6 +51,13 @@ class ActionAPI(Action):
 
         elif intent == "trivia" :
             self.display_queue.put(b"trivia")
+            question = self.triviaAPI.get_question()
+            dispatcher.utter_message(text=question)
+            
+            answer = self.triviaAPI.get_choices()
+            answers_text = f"A={answer[0]} B={answer[1]} C={answer[2]} D{answer[3]}"
+            dispatcher.utter_message(text=answers_text)
+
 
         elif intent == "nasa" :
             self.display_queue.put(b"nasa")
