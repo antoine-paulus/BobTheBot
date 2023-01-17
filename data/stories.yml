@@ -4,6 +4,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Zamayra
+  - action: utter_select_activity
   - intent: geography
   - action: action_API
   - intent: goodbye
@@ -12,6 +16,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: utter_select_activity
   - intent: geography
   - action: action_API
   - intent: help_activity
@@ -22,6 +30,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Kosma
+  - action: utter_select_activity
   - intent: nasa
   - action: action_API
   - intent: goodbye
@@ -30,6 +42,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Gerard
+  - action: utter_select_activity
   - intent: nasa
   - action: action_API
   - intent: help_activity
@@ -40,6 +56,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: utter_select_activity
   - intent: trivia
   - action: action_API
   - intent: goodbye
@@ -48,8 +68,28 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Zamayra
+  - action: utter_select_activity
   - intent: trivia
   - action: action_API
+  - intent: help_activity
+  - action: utter_help_trivia
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: give the name
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
   - intent: help_activity
   - action: utter_help_trivia
   - intent: goodbye

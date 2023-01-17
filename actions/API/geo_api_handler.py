@@ -2,7 +2,7 @@ import pycountry
 from random import randint
 import requests
 import json
-from actions.API.keys import  GEO_API_KEY
+from actions.API.keys import GEO_API_KEY
 
 class GeoApiHandler:
 

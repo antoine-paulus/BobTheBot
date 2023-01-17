@@ -1,7 +1,7 @@
 import requests
 import json
 import webbrowser
-from keys import APOD_API_KEY
+from actions.API.keys import APOD_API_KEY
 
 class Nasa:
     def __init__(self):
