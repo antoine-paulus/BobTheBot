@@ -73,17 +73,6 @@ class Trivia:
             if self.category != '':
                 self.url += f'&categories={self.category}'
 
-"""
-
-    def get_correct_answer_ABCD(self):
-        return self.correctAnswer_ABCD
-
-    def get_correct_answer_1234(self):
-        return self.correctAnswer_1234
-
-    def get_incorrect_answers(self):
-        return self.incorrectAnswers
-"""
 
 '''
 # Tests
