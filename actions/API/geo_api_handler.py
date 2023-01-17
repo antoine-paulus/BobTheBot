@@ -2,8 +2,7 @@ import pycountry
 from random import randint
 import requests
 import json
-import keys
-import cairosvg
+from actions.API.keys import GEO_API_KEY
 
 class GeoApiHandler:
 
@@ -30,7 +29,7 @@ class GeoApiHandler:
 
         data = {}
         headers= {
-        "apikey": keys.GEO_API_KEY
+        "apikey": GEO_API_KEY
         }
         response = requests.get(f"https://api.apilayer.com/geo/country/name/{country_name}", headers=headers)
         if response.status_code == 200:

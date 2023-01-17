@@ -10,21 +10,28 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from actions.API.geo_api_handler import *
+from actions.API.geo_api_handler import GeoApiHandler
+from actions.API.nasa import Nasa
+from actions.API.trivia import Trivia
+
 from BobDisplay.display import *
 
 class ActionAPI(Action):
 
     def __init__(self) -> None:
         super().__init__()
-        self.iter = 0
+        
+        # API
         self.geoAPI = GeoApiHandler("Default_name")
-        self.display_queue = multiprocessing.Queue()
-        display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
-        display_process.start()
+        self.nasaAPI = Nasa()
+        self.triviaAPI = Trivia()
 
-        #self.triviaAPI = ...
-        #self.nasaAPI = ...
+
+        # Pygame display
+        self.display_queue = multiprocessing.Queue()
+        self.display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
+        self.display_process.start()
+
 
     def name(self) -> Text:
         return "action_API"
@@ -45,6 +52,10 @@ class ActionAPI(Action):
 
         elif intent == "nasa" :
             self.display_queue.put(b"nasa")
+            image = self.nasaAPI.get_image()
+            print(image)
+            text = self.nasaAPI.get_description()
+            print(text)
             dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         else:
