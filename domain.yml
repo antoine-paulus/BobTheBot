@@ -1,43 +1,34 @@
-version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- mood_great:
-    use_entities: true
-- mood_unhappy:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- thank_you:
-    use_entities: true
-- help_bot:
-    use_entities: true
-- help_activity:
-    use_entities: true
-- try_other_activity:
-    use_entities: true
-- nasa:
-    use_entities: true
-- trivia:
-    use_entities: true
-- geography:
-    use_entities: true
-entities: []
-slots: {}
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- thank_you
+- help_bot
+- help_activity
+- try_other_activity
+- nasa
+- trivia
+- geography
+- give_name
+entities:
+- name
+slots:
+  name:
+    type: text
+    influence_conversation: true
 responses:
   utter_greet_global:
-  - text: Hello, my name is Bob, your assitant chatbot. I can propose you different activities, for example show you the latest discovery of NASA, play a geo game or trivia. What do you want to do?
+  - text: Hello, my name is Bob, your assitant chatbot.  What is your name?
+  utter_select_activity:
+  - text: I can propose you different activities, for example show you the latest
+      discovery of NASA, play a geo game or trivia.What do you want to do?
   utter_greet_light:
   - text: Hello, my name is Bob. What do you want to do ?
   utter_goodbye:
@@ -63,5 +54,3 @@ responses:
   - text: let's play trivia!
 actions:
 - action_API
-forms: {}
-e2e_actions: []
