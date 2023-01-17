@@ -1,0 +1,21 @@
+{
+    "john" : {
+        "trivia_score" : 50, 
+        "geo_score" : 10,
+        "incoming_chats" : [
+            {
+                "from" : "jane",
+                "content" : "don't forget the scrabble at 3 pm"
+            },
+            {
+                "from" : "jane",
+                "content" : "please answer my chats"
+            }
+        ]
+    },
+    "jane" : {
+        "trivia_score" : 20, 
+        "geo_score" : 15,
+        "incoming_chats" : []
+    }
+}
