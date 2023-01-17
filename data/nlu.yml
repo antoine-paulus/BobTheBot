@@ -133,6 +133,12 @@ nlu:
     - I want to play the geo
     - let's to learn the countries
     - I would like to change to the geography
+- intent: give_name
+  examples: |
+    - my name is [Bastien](name)
+    - [Zamayra](name)
+    - I am [Beatrice](name)
+    - My name is [Roger](name)
 
 
     

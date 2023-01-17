@@ -10,7 +10,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
-from actions.API.geo_api_handler import GeoApiHandler
+from actions.API.geo_api_handler import *
 from actions.API.nasa import Nasa
 from actions.API.trivia import Trivia
 
@@ -24,7 +24,9 @@ class ActionAPI(Action):
         # API
         self.geoAPI = GeoApiHandler("Default_name")
         self.nasaAPI = Nasa()
+        self.nasaAPI.load_data()
         self.triviaAPI = Trivia()
+        self.triviaAPI.load_data()
 
 
         # Pygame display
@@ -41,41 +43,34 @@ class ActionAPI(Action):
 
         print(f"\nintent = {intent}\n")
 
-        if intent == "geography":
-            question = self.geoAPI.generate_question()
-            print(question)
-            dispatcher.utter_message(text=question)
+        if intent == "geography" :
+            self.display_queue.put(b"geography")
+            type, question = self.geoAPI.generate_question()
+            print(f"type={type}, question={question}")
+            if type == "flag":
+                dispatcher.utter_message(text=question, image=FLAG_IMG_PATH)
+            else:
+                dispatcher.utter_message(text=question)
 
-        elif intent == "trivia":
+        elif intent == "trivia" :
             self.display_queue.put(b"trivia")
-
-            self.triviaAPI.generate_question()
             question = self.triviaAPI.get_question()
             dispatcher.utter_message(text=question)
+            
+            answer = self.triviaAPI.get_choices()
+            answers_text = f"A={answer[0]} B={answer[1]} C={answer[2]} D{answer[3]}"
+            dispatcher.utter_message(text=answers_text)
 
-            choices = self.triviaAPI.get_choices()
-            dispatcher.utter_message(text=f"A. {choices[0]}, B. {choices[1]}, C. {choices[2]}, D. {choices[3]}")
 
-            # answer =  --> how to get an answer ???
-            result = self.triviaAPI.get_result(answer='B')
-            dispatcher.utter_message(text=result[2])
-            # increment_user_score()
-
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
-
-        elif intent == "nasa":
+        elif intent == "nasa" :
             self.display_queue.put(b"nasa")
             image = self.nasaAPI.get_image()
             print(image)
             text = self.nasaAPI.get_description()
             print(text)
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         else:
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
-
-
-        self.iter += 1
+            dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
         
 
         return []
