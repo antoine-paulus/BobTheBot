@@ -42,13 +42,13 @@ class ActionAPI(Action):
         print(f"\nintent = {intent}\n")
 
         if intent == "geography" :
+            self.display_queue.put(b"geography")
             question = self.geoAPI.generate_question()
             print(question)
             dispatcher.utter_message(text=question)
 
         elif intent == "trivia" :
             self.display_queue.put(b"trivia")
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         elif intent == "nasa" :
             self.display_queue.put(b"nasa")
@@ -56,13 +56,9 @@ class ActionAPI(Action):
             print(image)
             text = self.nasaAPI.get_description()
             print(text)
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         else:
-            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
-
-
-        self.iter += 1
+            dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
         
 
         return []
