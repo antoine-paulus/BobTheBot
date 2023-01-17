@@ -4,10 +4,14 @@ import requests
 import json
 from actions.API.keys import GEO_API_KEY
 
+FLAG_IMG_PATH = "./actions/API/current_flag.png"
+
 class GeoApiHandler:
 
     def __init__(self, name : str):
         self._countries_list = list(pycountry.countries)
+
+        self.current_data_type = ""
         self.current_question = ""
         self.current_answer = ""
         self.current_user_score = 0
@@ -20,9 +24,9 @@ class GeoApiHandler:
 
     def _get_country_flag(self, country_name : str):
         """Get the flag of the specified country"""
-        response = requests.get(f"https://countryflagsapi.com/png/{country_name}")
+        response = requests.get(f"https://countryflagsapi.com/png/{country_name}", timeout=5)
         if response.status_code == 200:
-            with open("./actions/API/current_flag.png", 'wb') as flag_img:
+            with open(FLAG_IMG_PATH, 'wb') as flag_img:
                flag_img.write(response.content)
         else:
             print(f"code error {response.status_code}")
@@ -35,7 +39,7 @@ class GeoApiHandler:
         headers= {
         "apikey": GEO_API_KEY
         }
-        response = requests.get(f"https://api.apilayer.com/geo/country/name/{country_code}", headers=headers)
+        response = requests.get(f"https://api.apilayer.com/geo/country/name/{country_code}", headers=headers, timeout=5)
         if response.status_code == 200:
             response_dict = response.json()[0]
             data["name"] = response_dict["name"]
@@ -49,7 +53,7 @@ class GeoApiHandler:
         return data
     
 
-    def generate_question(self) -> str:
+    def generate_question(self) -> tuple:
         #Get a random country:
 
         country_code = self._get_random_country()
@@ -58,15 +62,19 @@ class GeoApiHandler:
             country_name = country_data["name"]
             data_type_list = list(country_data.keys())
             #data_type_list = ["flag"]
-            data_type = data_type_list[randint(0, len(data_type_list) - 1)]
-            if data_type == "flag":
+            self.current_data_type = data_type_list[randint(0, len(data_type_list) - 1)]
+            #We don't want to get 'name' for question type:
+            while self.current_data_type == "name":
+                self.current_data_type = data_type_list[randint(0, len(data_type_list) - 1)]
+            #Handle specific case for flag question type:
+            if self.current_data_type == "flag":
                 self._get_country_flag(country_name)
-                self.current_question = "To what country this flag is ?"
+                self.current_question = "To which country does this flag belong?"
                 self.current_answer = country_name
             else:
-                self.current_question = f"What is the {data_type} of {country_name} ?"
-                self.current_answer = country_data[data_type]
-        return self.current_question
+                self.current_question = f"What is the {self.current_data_type} of {country_name} ?"
+                self.current_answer = country_data[self.current_data_type]
+        return (self.current_data_type, self.current_question)
 
 
     def check_answer(self, given_answer : str) -> None:
