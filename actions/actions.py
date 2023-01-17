@@ -10,21 +10,28 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
+from actions.API.geo_api_handler import GeoApiHandler
+from actions.API.nasa import Nasa
+from actions.API.trivia import Trivia
+
+from BobDisplay.display import *
 
 class ActionAPI(Action):
 
-    iter = 0
-
-    #geoAPI = ...
-    #triviaAPI = ...
-    #nasaAPI = ...
-
     def __init__(self) -> None:
         super().__init__()
-        self.iter = 0
-        #self.geoAPI = ...
-        #self.triviaAPI = ...
-        #self.nasaAPI = ...
+        
+        # API
+        self.geoAPI = GeoApiHandler("Default_name")
+        self.nasaAPI = Nasa()
+        self.triviaAPI = Trivia()
+
+
+        # Pygame display
+        self.display_queue = multiprocessing.Queue()
+        self.display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
+        self.display_process.start()
+
 
     def name(self) -> Text:
         return "action_API"
@@ -34,16 +41,29 @@ class ActionAPI(Action):
 
         print(f"\nintent = {intent}\n")
 
-        if intent == "geo" :
-            pass
+        if intent == "geography" :
+            question = self.geoAPI.generate_question()
+            print(question)
+            dispatcher.utter_message(text=question)
+
         elif intent == "trivia" :
-            pass
+            self.display_queue.put(b"trivia")
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
+
         elif intent == "nasa" :
-            pass
+            self.display_queue.put(b"nasa")
+            image = self.nasaAPI.get_image()
+            print(image)
+            text = self.nasaAPI.get_description()
+            print(text)
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
+
+        else:
+            dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
 
         self.iter += 1
-        dispatcher.utter_message(text=f"Hello World! n°{self.iter}")
+        
 
         return []
 

@@ -39,15 +39,13 @@ responses:
   - text: you are very welcome
   - text: you are welcome
   utter_help_bot:
-  - text: I can show different activities, for example play a geo game, do some trivia
-      or show you the latest NASA discovery.
+  - text: I can show different activities, for example play a geo game, do some trivia or show you the latest NASA discovery.
   utter_help_nasa:
   - text: I can show you the latest NASA discovery and read you the description.
   utter_help_trivia:
   - text: We can do some trivia. There are many subject and levels of difficulty.
   utter_help_geography:
-  - text: You can test your knowledge in geograph. I will tell you the country name
-      and you need to gess the capital.
+  - text: You can test your knowledge in geograph. I will tell you the country name and you need to gess the capital.
   utter_connexion_geography:
   - text: let's to learn some capital of countries!
   utter_connexion_nasa:
