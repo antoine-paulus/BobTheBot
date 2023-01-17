@@ -1,6 +1,3 @@
-version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -19,12 +16,19 @@ intents:
 - nasa
 - trivia
 - geography
-
+- give_name
+entities:
+- name
+slots:
+  name:
+    type: text
+    influence_conversation: true
 responses:
   utter_greet_global:
-  - text: Hello, my name is Bob, your assitant chatbot. I can propose you different
-      activities, for example show you the latest discovery of NASA, play a geo game
-      or trivia. What do you want to do?
+  - text: Hello, my name is Bob, your assitant chatbot.  What is your name?
+  utter_select_activity:
+  - text: I can propose you different activities, for example show you the latest
+      discovery of NASA, play a geo game or trivia.What do you want to do?
   utter_greet_light:
   - text: Hello, my name is Bob. What do you want to do ?
   utter_goodbye:
@@ -50,8 +54,5 @@ responses:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: let's play trivia!
-
 actions:
 - action_API
-forms: {}
-e2e_actions: []
