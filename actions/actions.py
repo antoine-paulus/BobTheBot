@@ -40,7 +40,7 @@ class ActionAPI(Action):
             dispatcher.utter_message(text=question)
 
         elif intent == "trivia" :
-            self.display_queue.put(b"nasa")
+            self.display_queue.put(b"trivia")
             dispatcher.utter_message(text=f"Debug : custom action n°{self.iter} intent={intent}")
 
         elif intent == "nasa" :
