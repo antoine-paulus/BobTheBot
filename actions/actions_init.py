@@ -21,13 +21,23 @@ class ActionINIT(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         intent = tracker.latest_message['intent'].get('name')
-        print("action1")
+        entity = tracker.latest_message['entities'][0]['value']
+
         print(f"\nintent = {intent}\n")
 
         if intent == "give_name" :
-            name = "Bastian"
+            dispatcher.utter_message(text=f"Debug : entity recognized={entity}")
 
-            pass
+            name_in_db = True
+
+            if name_in_db :
+                dispatcher.utter_message(text=f"Welcome back !")
+            else:
+                dispatcher.utter_message(text=f"Hello {entity} nice to meet you !")
+                dispatcher.utter_message(text=f"I am Bob your personnal assistant")
+                dispatcher.utter_message(text=f"If you ever need help just say help or help followed by the activity you need more information about")
+
+
         else:
             dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
         
