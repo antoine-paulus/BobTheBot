@@ -80,6 +80,108 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+  - story: trivia_2_rounds
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_3_rounds
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+  - story: trivia_4_rounds
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+  - story: trivia_5_rounds
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
 - story: trivia_help
   steps:
   - intent: greet
@@ -113,104 +215,5 @@ stories:
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
-  - intent: goodbye
-  - action: utter_goodbye
-
-#new
-- story: trivia_2_rounds
-  steps:
-  - intent: greet
-  - action: utter_greet_global
-  - intent: give_name
-    entities:
-    - name: Antoine
-  - action: utter_select_activity
-  - intent: trivia
-  - action: utter_connexion_trivia
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - intent: stop_game
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: trivia_3_rounds
-  steps:
-  - intent: greet
-  - action: utter_greet_global
-  - intent: give_name
-    entities:
-    - name: Antoine
-  - action: utter_select_activity
-  - intent: trivia
-  - action: utter_connexion_trivia
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - intent: stop_game
-  - intent: goodbye
-  - action: utter_goodbye
-
-  - story: trivia_4_rounds
-  steps:
-  - intent: greet
-  - action: utter_greet_global
-  - intent: give_name
-    entities:
-    - name: Antoine
-  - action: utter_select_activity
-  - intent: trivia
-  - action: utter_connexion_trivia
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - intent: stop_game
-  - intent: goodbye
-  - action: utter_goodbye
-
-  - story: trivia_5_rounds
-  steps:
-  - intent: greet
-  - action: utter_greet_global
-  - intent: give_name
-    entities:
-    - name: Antoine
-  - action: utter_select_activity
-  - intent: trivia
-  - action: utter_connexion_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
-  - action: action_API
-  - intent: response_trivia
-  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
