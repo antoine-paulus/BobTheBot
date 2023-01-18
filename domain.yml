@@ -26,7 +26,6 @@ entities:
 - name
 - trivia_answer
 - geography_answer
-- nasa_answer
 slots:
   name:
     type: text
@@ -34,6 +33,9 @@ slots:
   trivia_answer:
     type: text
     influence_conversation: true
+  geography_answer:
+    type: text
+    influence_conversation: true 
 responses:
   utter_greet_global:
   - text: Hello, my name is Bob, your assitant chatbot.  What is your name?
@@ -68,3 +70,4 @@ responses:
   - text: Let's play trivia!
 actions:
 - action_API
+- action_INIT
