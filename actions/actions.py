@@ -42,7 +42,6 @@ class ActionAPI(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         intent = tracker.latest_message['intent'].get('name')
-        entity = tracker.latest_message['entities'][0]['value']
 
         print(f"\nintent = {intent}\n")
 
@@ -65,7 +64,7 @@ class ActionAPI(Action):
             self.display_queue.put(bytes("TQ/"+question,encoding='utf8'))
             
             answer = self.triviaAPI.get_choices()
-            answers_text = f"A = {answer[0]}/B = {answer[1]}/C = {answer[2]}/D = {answer[3]}"
+            answers_text = f"A = {answer[0]}  /B = {answer[1]}  /C = {answer[2]}  /D = {answer[3]}"
             self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=answers_text)
         
@@ -83,7 +82,10 @@ class ActionAPI(Action):
             dispatcher.utter_message(text = txt)
 
         elif intent == "response_trivia" :
+            entity = tracker.latest_message['entities'][0]['value']
+
             response = self.triviaAPI.get_result(entity)
+
 
             if response[0] :
                 dispatcher.utter_message(text="Bravo")
