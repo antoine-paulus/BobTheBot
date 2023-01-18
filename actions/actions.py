@@ -45,12 +45,15 @@ class ActionAPI(Action):
 
         if intent == "geography" :
             self.display_queue.put(b"geography")
-            type, question = self.geoAPI.generate_question()
+            type, question = self.geoAPI.get_question()
             print(f"type={type}, question={question}")
             if type == "flag":
                 dispatcher.utter_message(text=question, image=FLAG_IMG_PATH)
             else:
                 dispatcher.utter_message(text=question)
+            choices = self.geoAPI.get_choices()
+            dispatcher.utter_message(text=choices)
+            
 
         elif intent == "trivia" :
             self.display_queue.put(b"trivia")
