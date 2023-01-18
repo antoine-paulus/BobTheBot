@@ -1,5 +1,6 @@
 from random import randint
 import requests
+import actions.API.users
 
 FLAG_IMG_PATH = "./actions/API/current_flag.png"
 NUM_RESPONSES = 4
@@ -20,7 +21,8 @@ class GeoApiHandler:
         self.current_question = ""
         self.current_answer = ""
         self._current_answer_index = ""
-        self.current_user_score = 0
+
+        self.user_name = user_name
 
 
     def _get_country_flag(self, country_name : str):
@@ -39,12 +41,13 @@ class GeoApiHandler:
         data = {}
         #Sample random country from the database
         country_data = self._countries_data[country_index]
-        data["name"] = country_data["name"]
-        data["capital"] = country_data["capital"]
-        data["continent"] = country_data["region"]
-        data["currency"] = country_data["currencies"][0]["name"]
-        data["language"] = country_data["languages"][0]["name"]
-        data["alpha3Code"] = country_data["alpha3Code"]
+        data["name"] = country_data.get("name", "")
+        data["capital"] = country_data.get("capital", "")
+        data["continent"] = country_data.get("region", "")
+        data["currency"] = country_data.get("currencies", [{}])[0].get("name", "")
+        data["language"] = country_data.get("languages", [{}])[0].get("name", "")
+        data["alpha3Code"] = country_data.get("alpha3Code", "")
+        data["flag"] = country_data.get("flag", "")
         return data
     
 
@@ -59,12 +62,17 @@ class GeoApiHandler:
             country_index = randint(0, len(self._countries_data) -1)
             country_data = self._get_country_data(country_index)
             if country_data["name"] not in sampled_countries_name:
-                response = country_data[self.current_data_type]
-                #To avoid dupplicated responses:
-                if response not in responses:
+                #specific case for flag questions:
+                if self.current_data_type == "flag":
+                    responses.append(country_data["name"])
                     sampled_countries_name.append(country_data["name"])
-                    #Generate a response
-                    responses.append(country_data[self.current_data_type])
+                else:
+                    response = country_data[self.current_data_type]
+                    #To avoid dupplicated responses:
+                    if response not in responses and response not in ["", self.current_answer]:
+                        sampled_countries_name.append(country_data["name"])
+                        #Generate a response
+                        responses.append(country_data[self.current_data_type])
         #Insert the right response at a random index in the responses list:
         self._current_answer_index = randint(0, NUM_RESPONSES - 1)
         responses.insert(self._current_answer_index, self.current_answer)
@@ -72,11 +80,12 @@ class GeoApiHandler:
 
 
     def get_user_score(self):
-        return self.current_user_score
+        return users.get_user_score(self.user_name, users.Game.GEO)
 
 
     def get_question(self) -> tuple:
         """"""
+
         if self._countries_data != {}:
              #Get a random country:
             country_index = randint(0, len(self._countries_data) - 1)
@@ -88,11 +97,11 @@ class GeoApiHandler:
                 #data_type_list = ["flag"]
                 self.current_data_type = data_type_list[randint(0, len(data_type_list) - 1)]
                 #We don't want to get 'name'or alphacode for question type:
-                while self.current_data_type in ["name", "alpha3Code"]:
+                while self.current_data_type in ["name", "alpha3Code"] or country_data[self.current_data_type] == "":
                     self.current_data_type = data_type_list[randint(0, len(data_type_list) - 1)]
                 #Handle specific case for flag question type:
                 if self.current_data_type == "flag":
-                    self._get_country_flag(self.current_country_name)
+                    self._get_country_flag(country_data["alpha3Code"])
                     self.current_question = "To which country does this flag belong?"
                     self.current_answer = self.current_country_name
                 else:
@@ -117,10 +126,9 @@ class GeoApiHandler:
 
         choices_letter = [" response A", "response B", " response C", "response D"]
         if self.current_answer in choices_letter[self._current_answer_index]:
-            self.current_user_score += 1
-            return f"Great this is the good answer ! Your score is {self.current_user_score}"
+            users.increment_user_score(self.user_name, users.Game.GEO)
+            return f"Great this is the good answer ! Your score is {users.get_user_score(self.user_name, users.Game.GEO)}"
         else:
-            self.current_user_score = 0
             return f"No sorry, the correct answer is {self.current_answer}"
 
 
