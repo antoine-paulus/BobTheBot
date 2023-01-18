@@ -2,6 +2,8 @@ import multiprocessing
 import pygame
 import os
 from enum import Enum 
+from urllib.request import urlopen
+import io
 
 class State(Enum):
     IDLE = 1
@@ -18,6 +20,21 @@ def load_images(path):
             image = pygame.image.load(os.path.join(path, file))
             image_list.append(image)
     return image_list
+
+def get_nasa_image(url : str):
+    image_url = url
+    image_str = urlopen(image_url).read()
+    image_file = io.BytesIO(image_str)
+
+    image = pygame.image.load(image_file)
+    
+    img_size = (600, 500)
+    image_finale = pygame.transform.scale(image, img_size)
+    return image_finale
+
+
+
+
 
 
 def display_Bob(input_queue):
@@ -66,9 +83,8 @@ def display_Bob(input_queue):
             else:
                 action = input.split(" ")
                 if action[0] == "image_nasa" :
-                    print("je dois afficher une nouvelle image")
                     try :
-                        image_nasa = pygame.image.load(action[1])
+                        image_nasa = get_nasa_image(action[1])
                     except :
                         print("ALED")
 
