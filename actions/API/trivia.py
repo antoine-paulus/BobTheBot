@@ -63,15 +63,15 @@ class Trivia:
         else:
             return False, 0, f"Ops, your answer is wrong! The correct answer was : {self.correctAnswer}"
 
-        def get_all_categories(self):
-            return self.all_categories
+    def get_all_categories(self):
+        return self.all_categories
 
-        def update_settings(self, difficulty, category):
-            self.difficulty = difficulty
-            self.category = category
-            self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
-            if self.category != '':
-                self.url += f'&categories={self.category}'
+    def update_settings(self, difficulty, category):
+        self.difficulty = difficulty
+        self.category = category
+        self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
+        if self.category != '':
+            self.url += f'&categories={self.category}'
 
 
 '''
