@@ -1,6 +1,7 @@
 import multiprocessing
 import pygame
 import os
+import text
 from enum import Enum 
 from urllib.request import urlopen
 import io
@@ -68,7 +69,7 @@ def display_Bob(input_queue):
 
             elif input == "trivia" :
                 state = State.TRIVIA
-                current_face = faces[8]
+                current_face = faces[5]
 
             elif input == "geography" :
                 state = State.GEO
@@ -105,6 +106,8 @@ def display_Bob(input_queue):
             pass
         
         elif state == State.TRIVIA :
+            question = text.format(trivia_question, font, 50, 300, 500, (255,255,255))
+            text.render(screen,question)
             pass
 
         elif state == State.NASA :
