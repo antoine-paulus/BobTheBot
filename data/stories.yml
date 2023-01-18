@@ -61,6 +61,8 @@ stories:
     - name: Antoine
   - action: utter_select_activity
   - intent: trivia
+  - action: utter_trivia_API
+  - intent: response_trivia
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
@@ -73,6 +75,8 @@ stories:
     - name: Zamayra
   - action: utter_select_activity
   - intent: trivia
+  - action: utter_trivia_API
+  - intent: response_trivia
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
@@ -89,6 +93,8 @@ stories:
     - name: Bastien
   - action: utter_select_activity
   - intent: trivia
+  - action: utter_trivia_API
+  - intent: response_trivia
   - action: utter_connexion_trivia
   - intent: help_activity
   - action: utter_help_trivia

@@ -2,6 +2,7 @@ import requests
 import json
 import webbrowser
 from actions.API.keys import APOD_API_KEY
+# from keys import APOD_API_KEY  pour tester localement
 
 class Nasa:
     def __init__(self):
@@ -25,7 +26,7 @@ class Nasa:
         webbrowser.open(self.image)
 
 
-''' 
+'''
 # Tests
 nasa = Nasa()
 nasa.load_data()

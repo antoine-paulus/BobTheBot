@@ -139,6 +139,16 @@ nlu:
     - [Zamayra](name)
     - I am [Beatrice](name)
     - My name is [Roger](name)
+- intent: response_trivia
+  examples: |
+    - it's [a](trivia_answer)
+    - I think it's [b](trivia_answer)
+    - [c](trivia_answer) is the anwer
+    - [d](trivia_answer)
+    - [A](trivia_answer)
+    - [B](trivia_answer)
+    - [C](trivia_answer)
+    - [D](trivia_answer)
 
 
     
