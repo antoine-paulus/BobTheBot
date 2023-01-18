@@ -1,5 +1,83 @@
 version: "2.0"
 stories:
+# NASA stories :
+- story: nasa
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Kosma
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_help
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Gerard
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: help_activity
+  - action: utter_help_nasa
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_change_activity_geography
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Clement
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_change_activity_trivia
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastian
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+# GEO stories :
 - story: geography
   steps:
   - intent: greet
@@ -7,6 +85,7 @@ stories:
   - intent: give_name
     entities:
     - name: Zamayra
+  - action: action_INIT
   - action: utter_select_activity
   - intent: geography
   - action: utter_connexion_geography
@@ -23,6 +102,26 @@ stories:
   - intent: give_name
     entities:
     - name: Bastien
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: help_activity
+  - action: utter_help_geography
+  - intent: response_geography
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_help_vol.2
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: action_INIT
   - action: utter_select_activity
   - intent: geography
   - action: utter_connexion_geography
@@ -34,53 +133,199 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: nasa
+- story: geography_play_again_request
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: give_name
     entities:
     - name: Kosma
+  - action: action_INIT
   - action: utter_select_activity
-  - intent: nasa
-  - action: utter_connexion_nasa
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - action: utter_play_again
+  - intent: affirm
+  - action: action_API
+  - intent: response_geography
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_help
+- story: geography_deny_request_play_again
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: give_name
     entities:
-    - name: Gerard
+    - name: Kosma
+  - action: action_INIT
   - action: utter_select_activity
-  - intent: nasa
-  - action: utter_connexion_nasa
+  - intent: geography
+  - action: utter_connexion_geography
   - action: action_API
-  - intent: help_activity
-  - action: utter_help_nasa
+  - intent: response_geography
+  - action: action_API
+  - action: utter_play_again
+  - intent: deny
   - intent: goodbye
   - action: utter_goodbye
 
-- story: trivia
+- story: geography_play_again_intent
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: play_again
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_change_activity_nasa
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: give_name
     entities:
     - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_change_activity_trivia_1_round
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Clement
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: try_other_activity
   - action: utter_select_activity
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
   - intent: response_trivia
   - action: action_API
+  - intent: stop_game
   - intent: goodbye
   - action: utter_goodbye
 
-  - story: trivia_2_rounds
+- story: geography_change_activity_trivia
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Clement
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_deny_request_play_again_ask_another_activity_trivia_1_round
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Kosma
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - action: utter_play_again
+  - intent: deny
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+# TRIVIA stories :
+- story: trivia_1_round
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Antoine
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_2_rounds
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -125,7 +370,192 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-  - story: trivia_4_rounds
+
+- story: trivia_play_again_request_2_rounds
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Jesus
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: utter_play_again
+  - intent: affirm
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: stop_game
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_deny_request_play_again
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Jesus
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: utter_play_again
+  - intent: deny
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_play_again_intent
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Lionel
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: play_again
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_change_activity_geography
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: David
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_change_activity_nasa
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Vincent
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: try_other_activity
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_4_rounds
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -152,7 +582,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-  - story: trivia_5_rounds
+- story: trivia_5_rounds
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -182,13 +612,14 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: trivia_help
+- story: trivia_1_round_help
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: give_name
     entities:
     - name: Zamayra
+  - action: action_INIT
   - action: utter_select_activity
   - intent: trivia
   - action: utter_connexion_trivia
@@ -197,16 +628,18 @@ stories:
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
+  - intent: stop_game
   - intent: goodbye
   - action: utter_goodbye
 
-- story: give the name
+- story: trivia_help
   steps:
   - intent: greet
   - action: utter_greet_global
   - intent: give_name
     entities:
     - name: Bastien
+  - action: action_INIT
   - action: utter_select_activity
   - intent: trivia
   - action: utter_connexion_trivia
@@ -215,5 +648,17 @@ stories:
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
