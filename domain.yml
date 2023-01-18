@@ -18,9 +18,12 @@ intents:
 - geography
 - give_name
 - response_trivia
+- response_geography
 entities:
 - name
 - trivia_answer
+- geography_answer
+- nasa_answer
 slots:
   name:
     type: text
@@ -60,7 +63,5 @@ responses:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: let's play trivia!
-  utter_trivia_API:
-  - text: What is the ...? The answers are A) B) C) D)
 actions:
 - action_API

@@ -149,6 +149,18 @@ nlu:
     - [B](trivia_answer)
     - [C](trivia_answer)
     - [D](trivia_answer)
+- intent: response_geography
+  examples: |
+    - it's [a](geography_answer)
+    - I think it's [b](geography_answer)
+    - [c](geography_answer) is the anwer
+    - [d](geography_answer)
+    - [A](geography_answer)
+    - [B](geography_answer)
+    - [C](geography_answer)
+    - [D](geography_answer)
+
+
 
 
     

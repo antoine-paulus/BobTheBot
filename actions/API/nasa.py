@@ -26,7 +26,7 @@ class Nasa:
         webbrowser.open(self.image)
 
 
-'''
+"""
 # Tests
 nasa = Nasa()
 nasa.load_data()
@@ -34,4 +34,4 @@ print(nasa.get_image())
 print(nasa.get_description())
 nasa.show_image()
 # Tests : OK
-'''
+"""

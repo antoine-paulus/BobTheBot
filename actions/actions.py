@@ -26,14 +26,14 @@ class ActionAPI(Action):
         self.nasaAPI = Nasa()
         self.nasaAPI.load_data()
         self.triviaAPI = Trivia()
-        self.triviaAPI.load_data()
+        self.triviaAPI.generate_question()
 
 
         # Pygame display
         self.display_queue = multiprocessing.Queue()
         self.display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
         self.display_process.start()
-
+        self.nb_question = 0
 
     def name(self) -> Text:
         return "action_API"
@@ -58,16 +58,21 @@ class ActionAPI(Action):
             dispatcher.utter_message(text=question)
             
             answer = self.triviaAPI.get_choices()
-            answers_text = f"A={answer[0]} B={answer[1]} C={answer[2]} D{answer[3]}"
+            answers_text = f"A={answer[0]} B={answer[1]} C={answer[2]} D={answer[3]}"
             dispatcher.utter_message(text=answers_text)
+        
 
 
         elif intent == "nasa" :
             self.display_queue.put(b"nasa")
             image = self.nasaAPI.get_image()
-            print(image)
-            text = self.nasaAPI.get_description()
-            print(text)
+            print("action.py => NASA")
+            display_image = "image_nasa "+image
+            self.display_queue.put(bytes(display_image, encoding='utf8'))
+
+            txt = self.nasaAPI.get_description()
+
+            dispatcher.utter_message(text = txt)
 
         else:
             dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
