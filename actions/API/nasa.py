@@ -3,7 +3,7 @@ import json
 import webbrowser
 from actions.API.keys import APOD_API_KEY
 # from keys import APOD_API_KEY  pour tester localement
-# test baptiste
+
 class Nasa:
     def __init__(self):
         self.url = 'https://api.nasa.gov/planetary/apod?api_key=' + APOD_API_KEY
