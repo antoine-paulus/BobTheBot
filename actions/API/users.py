@@ -59,6 +59,10 @@ def send_user_message(sender_name : str, receiver_name : str, message : str):
     data[receiver_name]["incoming_chats"].append({"from" : sender_name, "content" : message})
     _write_data_on_json(data)
 
+def user_in_database(user_name : str) -> bool : 
+    """return if a user is in database"""
+    data = _get_data_from_json()
+    return user_name in data.keys()
 
 def _get_data_from_json() -> dict:
     """Return the content of the json database"""
@@ -66,7 +70,6 @@ def _get_data_from_json() -> dict:
     data = json.load(file)
     file.close()
     return data
-
 
 def _write_data_on_json(data : dict) : 
     """Re-write the json database from the data passed in parameters"""
