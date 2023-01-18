@@ -6,7 +6,7 @@ class Game (Enum):
     GEO = "geo_score"
 
 
-def user_get_score(user_name : str, game_name : Game) -> int: 
+def get_user_score(user_name : str, game_name : Game) -> int: 
     """Return the score of a player for a given game. Please use game enum from the import"""
     file = open("data/user_data.json",'r')
     data = json.load(file)
@@ -40,8 +40,4 @@ def get_user_data(user_name : str) -> dict :
         file.close()
     return data[user_name]
 
-if __name__ == "__main__" : 
-    print(user_get_score("jane",Game.TRIVIA))
-    increment_user_score("jane",Game.TRIVIA,3)
-    print(user_get_score("jane",Game.TRIVIA))
 
