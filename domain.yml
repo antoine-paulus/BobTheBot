@@ -19,6 +19,9 @@ intents:
 - give_name
 - response_trivia
 - response_geography
+- play_again
+- stop_game
+- repeat_question
 entities:
 - name
 - trivia_answer

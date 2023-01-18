@@ -30,6 +30,7 @@ nlu:
     - see you later
     - ok, good evening
     - good bye
+    - exit
 - intent: affirm
   examples: |
     - yes
@@ -99,53 +100,63 @@ nlu:
 - intent: help_bot
   examples: |
     - what can you do?
-    - can you tell me what do you do?
-    - tell me what do you do
+    - can you tell me what can you do?
+    - tell me what can you do
+    - what is your purpose?
+    - I would like to know what can you do
 - intent: try_other_activity
   examples: |
-    - I want to change another activity
-    - what others activities do you have?
+    - I want to change to another activity
+    - I want to change the activity
+    - Let's change the activity
+    - What others activities do you have?
     - I would like to change the activity
 - intent: nasa
   examples: |
     - NASA
-    - I would like to change at NASA
+    - I would like to change to NASA
     - I want to see an image of NASA
+    - I would like to see a NASA image
     - show me the latest discovery
     - show le the discovery of NASA
-    - I would like to change to the NASA
+    - I would like to change to NASA activity
 - intent: help_activity
   examples: |
     - how it works
     - can you explain me how it works
     - I don't understand how it works
+    - can you explain me this activity
 - intent: trivia
   examples: |
     - trivia
-    - I would like to change to trivia
+    - I would like to change to trivia game
     - I want to play the trivia
     - let's play to trivia
-    - I would like to change to the trivia
+    - I would like to change to trivia
+    - I would like to play trivia
+    - I want to respond to some trivia questions
 - intent: geography
   examples: |
     - geography
     - I would like to change to geography activity
     - I want to play the geo
-    - let's to learn the countries
-    - I would like to change to the geography
+    - let's learn the countries
+    - I would like to change to geography
+    - I want to practice my geography skills
 - intent: give_name
   examples: |
     - my name is [Bastien](name)
     - [Zamayra](name)
     - I am [Beatrice](name)
     - My name is [Roger](name)
+    - I'm [Kosma](name)
 - intent: response_trivia
   examples: |
     - it's [a](trivia_answer)
     - I think it's [b](trivia_answer)
-    - [c](trivia_answer) is the anwer
+    - [c](trivia_answer) is the answer
     - [d](trivia_answer)
-    - [A](trivia_answer)
+    - The answer is [A](trivia_answer)
     - [B](trivia_answer)
     - [C](trivia_answer)
     - [D](trivia_answer)
@@ -153,14 +164,47 @@ nlu:
   examples: |
     - it's [a](geography_answer)
     - I think it's [b](geography_answer)
-    - [c](geography_answer) is the anwer
+    - [c](geography_answer) is the answer
     - [d](geography_answer)
     - [A](geography_answer)
-    - [B](geography_answer)
+    - The answer is [B](geography_answer)
     - [C](geography_answer)
     - [D](geography_answer)
+- intent: play_again
+  examples: |
+    - I want to play again
+    - I would like to try again
+    - Let's play another round
+    - I want to have another go
+    - Give me the next question
+    - Give me another question
+    - another question 
+    - another question please
+    - Play again
+    - Let's play again
+- intent: stop_game
+  examples: |
+    - That's enough, I don't want to play anymore
+    - I don't want to play anymore
+    - I want to stop playing
+    - Stop the game
+    - Quit the game
+    - Exit the game
+    - Stop
+    - Quit
+    - I think I'm tired of playing
+    - I quit, I don't want to play anymore
+    - Stop, I don't want to play anymore
+    - I don't want to play the next round
+    - I don't want to play anymore rounds
 
-
+- intent: repeat_question
+  examples: |
+    - Can you repeat the question?
+    - I didn't hear, can you repeat please?
+    - repeat the question, 
+    - repeat the question, please
+    - repeat
 
 
     
