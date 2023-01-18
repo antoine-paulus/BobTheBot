@@ -1,21 +1,13 @@
 import multiprocessing
 import pygame
 import os
+from enum import Enum 
 
-def input_process(input_queue):
-    """Captures the key events and put it in the queue"""
-    pygame.init()
-    screen = pygame.display.set_mode((600, 500))
-    pygame.display.set_caption("Key Input")
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            if event.type == pygame.KEYDOWN:
-                input_queue.put(event.unicode)
-    pygame.quit()
-
+class State(Enum):
+    IDLE = 1
+    GEO = 2
+    TRIVIA = 3
+    NASA = 4
 
 def load_images(path):
     image_list = []
@@ -35,9 +27,12 @@ def display_Bob(input_queue):
     pygame.display.set_caption("Key Display")
     font = pygame.font.Font(None, 30)
     faces = load_images("./BobDisplay/data/visage_bob")
-    
+    state = State.IDLE
     # ['baton.png', 'face_1.png', 'face_2.png', 'face_3.png', 'face_4.png', 
     # 'face_challenge.png', 'face_geography.png', 'face_nasa.png', 'face_trivia.png']
+    image_nasa = pygame.image.load("./BobDisplay/data/default_image.png")
+    trivia_question = "Loading..."
+    trivia_question = "Loading..."
     current_face = faces[1] 
 
     running = True
@@ -48,31 +43,59 @@ def display_Bob(input_queue):
             if event.type == pygame.QUIT:
                 running = False
         if not input_queue.empty():
-            
             input = input_queue.get().decode()
             print(f"input detected = {input}")
-
             if input == "nasa" :
+                state = State.NASA
                 current_face = faces[7]
+
             elif input == "trivia" :
+                state = State.TRIVIA
                 current_face = faces[8]
+
             elif input == "geography" :
+                state = State.GEO
                 current_face = faces[6]
+
+            elif input[:3] == "TQ/":
+                trivia_question = input.split("/")[1]
+            
+            elif input[:3] == "TA/":
+                trivia_answers = input.split("/")[1:]
+
             else:
-                current_face = faces[1]
+                action = input.split(" ")
+                if action[0] == "image_nasa" :
+                    print("je dois afficher une nouvelle image")
+                    try :
+                        image_nasa = pygame.image.load(action[1])
+                    except :
+                        print("ALED")
 
-            
-            #text = font.render(input, True, (255, 255, 255))
+                else :
+                    state = State.IDLE
+                    current_face = faces[1]
+        
 
-            
+
+
         screen.blit(current_face, (0, 0))
+
+        if state == State.IDLE :
+            pass
+        
+        elif state == State.GEO :
+            #text = font.render(input, True, (255, 255, 255))
+            pass
+        
+        elif state == State.TRIVIA :
+            pass
+
+        elif state == State.NASA :
+            screen.blit(image_nasa, (0, 0))
+
+            pass
+
 
         pygame.display.update()
     pygame.quit()
-
-if __name__ == "__main__":
-    input_queue = multiprocessing.Queue()
-    input_process = multiprocessing.Process(target=input_process, args=(input_queue,))
-    display_process = multiprocessing.Process(target=display_Bob, args=(input_queue,))
-    input_process.start()
-    display_process.start()
