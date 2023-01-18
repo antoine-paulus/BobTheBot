@@ -33,6 +33,23 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: nasa_help_selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Gerard
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: help_selection
+  - action: utter_help_selection
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
 - story: nasa_change_activity_geography
   steps:
   - intent: greet
@@ -140,6 +157,27 @@ stories:
   - action: action_API
   - intent: help_activity
   - action: utter_help_geography
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_help_&_help_selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: help_selection
+  - action: utter_help_selection
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: help_activity
+  - action: utter_help_geography
+  - intent: response_geography
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
 
@@ -758,6 +796,37 @@ stories:
   - intent: response_trivia
   - slot_was_set:
     - trivia_answer: a
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_help_selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: help_selection
+  - action: utter_help_selection
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - action: action_API
+  - intent: response_trivia
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
