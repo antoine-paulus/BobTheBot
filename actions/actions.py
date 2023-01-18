@@ -62,9 +62,11 @@ class ActionAPI(Action):
             self.display_queue.put(b"trivia")
             question = self.triviaAPI.get_question()
             dispatcher.utter_message(text=question)
+            self.display_queue.put(bytes("TQ/"+question,encoding='utf8'))
             
             answer = self.triviaAPI.get_choices()
-            answers_text = f"A={answer[0]}/B={answer[1]}/C={answer[2]}/D={answer[3]}"
+            answers_text = f"A = {answer[0]}/B = {answer[1]}/C = {answer[2]}/D = {answer[3]}"
+            self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=answers_text)
         
 
