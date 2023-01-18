@@ -31,6 +31,8 @@ def display_Bob(input_queue):
     # ['baton.png', 'face_1.png', 'face_2.png', 'face_3.png', 'face_4.png', 
     # 'face_challenge.png', 'face_geography.png', 'face_nasa.png', 'face_trivia.png']
     image_nasa = pygame.image.load("./BobDisplay/data/default_image.png")
+    trivia_question = "Loading..."
+    trivia_question = "Loading..."
     current_face = faces[1] 
 
     running = True
@@ -54,6 +56,12 @@ def display_Bob(input_queue):
             elif input == "geography" :
                 state = State.GEO
                 current_face = faces[6]
+
+            elif input[:3] == "TQ/":
+                trivia_question = input.split("/")[1]
+            
+            elif input[:3] == "TA/":
+                trivia_answers = input.split("/")[1:]
 
             else:
                 action = input.split(" ")
