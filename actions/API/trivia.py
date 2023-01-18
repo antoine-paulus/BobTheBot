@@ -55,23 +55,23 @@ class Trivia:
         if answer == self.correctAnswer or answer == self.correctAnswer_ABCD \
                 or answer == self.correctAnswer_1234:
             if self.difficulty == 'easy':
-                return True, 1, "Yes, your answer is correct! You have earned 1 point."
+                return True, 1, "Yes, your answer is correct!"
             elif self.difficulty == 'medium':
-                return True, 2, "Yes, your answer is correct! You have earned 2 points."
+                return True, 2, "Yes, your answer is correct!"
             else:
-                return True, 3, "Yes, your answer is correct! You have earned 3 points."
+                return True, 3, "Yes, your answer is correct!"
         else:
             return False, 0, f"Ops, your answer is wrong! The correct answer was : {self.correctAnswer}"
 
-        def get_all_categories(self):
-            return self.all_categories
+    def get_all_categories(self):
+        return self.all_categories
 
-        def update_settings(self, difficulty, category):
-            self.difficulty = difficulty
-            self.category = category
-            self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
-            if self.category != '':
-                self.url += f'&categories={self.category}'
+    def update_settings(self, difficulty, category):
+        self.difficulty = difficulty
+        self.category = category
+        self.url = f'https://the-trivia-api.com/api/questions?limit=1&difficulty={self.difficulty}'
+        if self.category != '':
+            self.url += f'&categories={self.category}'
 
 
 '''

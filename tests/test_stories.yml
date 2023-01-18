@@ -89,3 +89,79 @@ stories:
       are you a bot?
     intent: bot_challenge
   - action: utter_iamabot
+
+# new
+- story: play geography
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would like to do a geography test
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+
+  - story: ask geography help
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      My name's Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      What is the geo game ?
+    intent: utter_help_activity
+  - user: I'd like to play the geography test then.
+  - action: utter_connexion_geography
+  - action: action_API
+
+- story: play trivia
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would like you to ask me a general knowledge question
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+
+  - story: ask for trivia help
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      My name's Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      What is trivia ?
+    intent: utter_help_activity
+  - user: I'd like to play trivia then.
+  - action: utter_connexion_trivia
+  - action: action_API
+
+  
+
+
+
