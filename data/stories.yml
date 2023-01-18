@@ -370,7 +370,6 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-
 - story: trivia_play_again_request_2_rounds
   steps:
   - intent: greet
