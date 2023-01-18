@@ -14,8 +14,11 @@ intents:
 - help_activity
 - try_other_activity
 - nasa
+- nasa_help
 - trivia
+- trivia_help
 - geography
+- geography_help
 - give_name
 - response_trivia
 - response_geography

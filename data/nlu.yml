@@ -120,6 +120,9 @@ nlu:
     - show me the latest discovery
     - show le the discovery of NASA
     - I would like to change to NASA activity
+- intent: nasa_help
+  examples: |
+    - How can you show me the NASA discovery ?
 - intent: help_activity
   examples: |
     - how it works
@@ -135,6 +138,10 @@ nlu:
     - I would like to change to trivia
     - I would like to play trivia
     - I want to respond to some trivia questions
+- intent: trivia_help
+  examples: |
+    - What is trivia ?
+    - What's the trivia game ?
 - intent: geography
   examples: |
     - geography
@@ -143,6 +150,10 @@ nlu:
     - let's learn the countries
     - I would like to change to geography
     - I want to practice my geography skills
+- intent: geography
+  examples: |
+    - What is the geo game ?
+    - What is the geography game ?
 - intent: give_name
   examples: |
     - my name is [Bastien](name)
