@@ -34,12 +34,15 @@ class ActionAPI(Action):
         self.display_process = multiprocessing.Process(target=display_Bob, args=(self.display_queue,))
         self.display_process.start()
         self.nb_question = 0
+        self.nb_question_max = 5
+        self.current_score = 0
 
     def name(self) -> Text:
         return "action_API"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         intent = tracker.latest_message['intent'].get('name')
+        entity = tracker.latest_message['entities'][0]['value']
 
         print(f"\nintent = {intent}\n")
 
@@ -77,6 +80,24 @@ class ActionAPI(Action):
 
             dispatcher.utter_message(text = txt)
 
+        elif intent == "response_trivia" :
+            response = self.triviaAPI.get_result(entity)
+
+            if response[0] :
+                dispatcher.utter_message(text="Bravo")
+            else :
+                dispatcher.utter_message(text="Raté")
+
+
+        elif intent == "response_geography" :
+            pass
+        elif intent == "play_again" :
+            pass
+        elif intent == "stop_game" :
+            pass
+        elif intent == "repeat_question" :
+            pass
+        
         else:
             dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
         
