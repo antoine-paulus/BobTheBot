@@ -21,6 +21,7 @@ intents:
 - response_geography
 - play_again
 - stop_game
+- repeat_question
 entities:
 - name
 - trivia_answer
@@ -65,7 +66,5 @@ responses:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: let's play trivia!
-  utter_play_again:
-  - text: Would you like to play another round?
 actions:
 - action_API

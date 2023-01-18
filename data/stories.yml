@@ -662,3 +662,23 @@ stories:
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
+
+- story: repeat question trivia
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Bastien
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: repeat_question
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+

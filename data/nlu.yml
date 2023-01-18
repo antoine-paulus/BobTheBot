@@ -197,3 +197,15 @@ nlu:
     - Stop, I don't want to play anymore
     - I don't want to play the next round
     - I don't want to play anymore rounds
+
+- intent: repeat_question
+  examples: |
+    - Can you repeat the question?
+    - I didn't hear, can you repeat please?
+    - repeat the question, 
+    - repeat the question, please
+    - repeat
+
+
+    
+
