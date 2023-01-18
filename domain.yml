@@ -19,6 +19,7 @@ intents:
 - give_name
 - response_trivia
 - response_geography
+- repeat_question
 entities:
 - name
 - trivia_answer
@@ -65,3 +66,4 @@ responses:
   - text: let's play trivia!
 actions:
 - action_API
+- action_init

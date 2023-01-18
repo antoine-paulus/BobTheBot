@@ -160,7 +160,13 @@ nlu:
     - [C](geography_answer)
     - [D](geography_answer)
 
-
+-intent: repeat_question
+  examples: |
+    - Can you repeat the question?
+    - I didn't hear, can you repeat please?
+    - repeat the question, 
+    - repeat the question, please
+    - repeat
 
 
     
