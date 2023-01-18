@@ -9,9 +9,13 @@ stories:
     - name: Zamayra
   - action: utter_select_activity
   - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
+
 - story: geography_help
   steps:
   - intent: greet
@@ -21,11 +25,15 @@ stories:
     - name: Bastien
   - action: utter_select_activity
   - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
   - action: action_API
   - intent: help_activity
   - action: utter_help_geography
   - intent: goodbye
   - action: utter_goodbye
+
 - story: nasa
   steps:
   - intent: greet
@@ -35,9 +43,11 @@ stories:
     - name: Kosma
   - action: utter_select_activity
   - intent: nasa
+  - action: utter_connexion_nasa
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
+
 - story: nasa_help
   steps:
   - intent: greet
@@ -47,11 +57,13 @@ stories:
     - name: Gerard
   - action: utter_select_activity
   - intent: nasa
+  - action: utter_connexion_nasa
   - action: action_API
   - intent: help_activity
   - action: utter_help_nasa
   - intent: goodbye
   - action: utter_goodbye
+
 - story: trivia
   steps:
   - intent: greet
@@ -61,11 +73,13 @@ stories:
     - name: Antoine
   - action: utter_select_activity
   - intent: trivia
-  - action: utter_trivia_API
+  - action: utter_connexion_trivia
+  - action: action_API
   - intent: response_trivia
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
+
 - story: trivia_help
   steps:
   - intent: greet
@@ -75,14 +89,14 @@ stories:
     - name: Zamayra
   - action: utter_select_activity
   - intent: trivia
-  - action: utter_trivia_API
+  - action: utter_connexion_trivia
+  - action: action_API
   - intent: response_trivia
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
   - intent: goodbye
   - action: utter_goodbye
-
 
 - story: give the name
   steps:
@@ -93,9 +107,10 @@ stories:
     - name: Bastien
   - action: utter_select_activity
   - intent: trivia
-  - action: utter_trivia_API
-  - intent: response_trivia
   - action: utter_connexion_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
   - intent: goodbye
