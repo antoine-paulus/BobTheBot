@@ -58,7 +58,7 @@ class ActionAPI(Action):
             dispatcher.utter_message(text=question)
             
             answer = self.triviaAPI.get_choices()
-            answers_text = f"A={answer[0]} B={answer[1]} C={answer[2]} D={answer[3]}"
+            answers_text = f"A={answer[0]}/B={answer[1]}/C={answer[2]}/D={answer[3]}"
             dispatcher.utter_message(text=answers_text)
         
 
