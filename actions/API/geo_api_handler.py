@@ -1,9 +1,5 @@
-from http.client import responses
-import pycountry
 from random import randint
 import requests
-import json
-#from actions.API.keys import GEO_API_KEY
 
 FLAG_IMG_PATH = "./actions/API/current_flag.png"
 NUM_RESPONSES = 4
