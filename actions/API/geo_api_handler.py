@@ -2,7 +2,7 @@ from random import randint
 import requests
 import actions.API.users
 
-FLAG_IMG_PATH = "./actions/API/current_flag.png"
+FLAG_IMG_PATH = "./data/current_flag.png"
 NUM_RESPONSES = 4
 
 class GeoApiHandler:
