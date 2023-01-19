@@ -30,15 +30,15 @@ entities:
 - trivia_answer
 - geography_answer
 slots:
+  geography_answer:
+    type: text
+    influence_conversation: true
   name:
     type: text
     influence_conversation: true
   trivia_answer:
     type: text
     influence_conversation: true
-  geography_answer:
-    type: text
-    influence_conversation: true 
 responses:
   utter_greet_global:
   - text: Hello, my name is Bob, your assistant chatbot.  What is your name?
@@ -59,12 +59,14 @@ responses:
   - text: I can show different activities, for example play a geo game, do some trivia
       or show you the latest NASA discovery.
   utter_help_selection:
-  - text: To choose an activity, simply say "NASA", "Geography" or "Trivia".
-      You have also the liberty to say any phrase that corresponds to one of these three subjects.
+  - text: To choose an activity, simply say "NASA", "Geography" or "Trivia". You have
+      also the liberty to say any phrase that corresponds to one of these three subjects.
   utter_help_nasa:
   - text: I can show you the latest NASA discovery and read you the description.
   utter_help_trivia:
-  - text: We can play trivia. I'll give you questions about various subjects and you'll try to give me the correct answer between four choices. There are different categories and level of difficulty.
+  - text: We can play trivia. I'll give you questions about various subjects and you'll
+      try to give me the correct answer between four choices. There are different
+      categories and level of difficulty.
   utter_help_geography:
   - text: You can test your knowledge in geograph. I will tell you the country name
       and you need to guess the capital.

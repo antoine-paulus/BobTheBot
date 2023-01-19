@@ -16,3 +16,8 @@ rules:
   steps:
   - intent: give_name
   - action: action_INIT
+  - action: utter_select_activity
+- rule: select activity
+  steps:
+  - intent: try_other_activity
+  - action: utter_select_activity
