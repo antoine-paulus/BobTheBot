@@ -68,13 +68,15 @@ responses:
   - text: We can play trivia. I'll give you questions about various subjects and you'll try to give me the correct answer between four choices. There are different categories and level of difficulty.
   utter_help_geography:
   - text: You can test your knowledge in geograph. I will tell you the country name
-      and you need to gess the capital.
+      and you need to guess the capital.
   utter_connexion_geography:
   - text: Let's to learn some capital of countries!
   utter_connexion_nasa:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: Let's play trivia!
+  utter_play_again:
+  - text: Would you like to play again?
 actions:
 - action_API
 - action_INIT

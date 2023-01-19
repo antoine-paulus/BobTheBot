@@ -16,4 +16,5 @@ rules:
   steps:
   - action: utter_greet_global
   - intent: give_name
+  - action: action_INIT
   - action: utter_select_activity
