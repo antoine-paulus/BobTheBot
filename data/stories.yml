@@ -94,6 +94,8 @@ stories:
   - action: utter_connexion_trivia
   - action: action_API
   - intent: answer
+    entities:
+      - answer: A
   - slot_was_set:
     - answer: a
   - action: action_API
@@ -192,7 +194,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_play_again_request
+- story: geography_play_again
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -221,7 +223,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_deny_request_play_again
+- story: geography_play_again_vol2
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -242,7 +244,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_play_again_intent
+- story: geography_play_again_play_again
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -267,6 +269,14 @@ stories:
     - answer: A
   - slot_was_set:
     - answer: A
+  - action: action_API
+  - intent: play_again
+  - action: action_API
+  - intent: answer
+    entities:
+      - answer: B
+  - slot_was_set:
+      - answer: B
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
@@ -385,7 +395,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_deny_request_play_again_ask_another_activity_trivia_1_round
+- story: geography_play_again_ask_another_activity_trivia_1_round
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -402,6 +412,14 @@ stories:
     - answer: a
   - slot_was_set:
     - answer: a
+  - action: action_API
+  - intent: play_again
+  - action: action_API
+  - intent: answer
+    entities:
+      - answer: d
+  - slot_was_set:
+      - answer: d
   - action: action_API
   - intent: try_other_activity
   - action: utter_select_activity
