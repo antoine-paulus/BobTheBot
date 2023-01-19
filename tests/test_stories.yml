@@ -142,7 +142,7 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_help
+- story: help_nasa
   steps:
   - user: |
       good afternoon
@@ -155,8 +155,8 @@ stories:
   - action: utter_select_activity
   - user: |
       What is the NASA activity?
-    intent: nasa_help
-  - action: utter_nasa_help
+    intent: help_nasa
+  - action: utter_help_nasa
   - user: |
       I want to see a NASA image
     intent: nasa
@@ -194,12 +194,13 @@ stories:
   - action: utter_greet_global
   - user: |
       My name's Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
       What is the geo game ?
     intent: help_geography
+  - action: utter_help_geography
   - user: I'd like to play the geography test then.
   - action: utter_connexion_geography
   - action: action_API
@@ -212,7 +213,7 @@ stories:
   - action: utter_greet_global
   - user: |
       I am Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
@@ -229,12 +230,13 @@ stories:
   - action: utter_greet_global
   - user: |
       My name's Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
       What is trivia ?
     intent: help_trivia
+  - action: utter_help_trivia
   - user: I'd like to play trivia then.
   - action: utter_connexion_trivia
   - action: action_API

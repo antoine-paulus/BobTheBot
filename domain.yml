@@ -21,8 +21,7 @@ intents:
 - geography
 - help_geography
 - give_name
-- response_trivia
-- response_geography
+- answer
 - play_again
 - stop_game
 - repeat_question
