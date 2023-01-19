@@ -186,7 +186,7 @@ stories:
   - action: utter_connexion_geography
   - action: action_API
 
-  - story: ask geography help
+- story: ask geography help
   steps:
   - user: |
       hi
@@ -221,7 +221,7 @@ stories:
   - action: utter_connexion_trivia
   - action: action_API
 
-  - story: ask for trivia help
+- story: ask for trivia help
   steps:
   - user: |
       hi
