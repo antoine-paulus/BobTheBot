@@ -58,7 +58,7 @@ class ActionAPI(Action):
             answers_text = f"{choices[0]} /{choices[1]}  /{choices[2]}  /{choices[3]}"
             self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=choices)
-            self.last_activity = "gro"
+            self.last_activity = "geo"
             
 
         elif intent == "trivia" :
@@ -115,11 +115,23 @@ class ActionAPI(Action):
                     self.last_activity = "trivia"
                 else :
                     self.nb_question = 0
+            else :
+                print("erreur")
 
         elif intent == "stop_game" :
+            self.nb_question = 0
             pass
+        
         elif intent == "repeat_question":
-            pass
+            if self.last_activity == "geo" : 
+                question = self.geoAPI.current_question
+                dispatcher.utter_message(text=question)
+            elif self.last_activity == "trivia":
+                question = self.triviaAPI.get_question()
+                dispatcher.utter_message(text=question)
+            else :
+                print("erreur")
+
         
         else:
             dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
