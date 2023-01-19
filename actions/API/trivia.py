@@ -21,6 +21,7 @@ class Trivia:
         self.incorrectAnswers = ''
         self.choices = []
         self.correctAnswer_ABCD = ''
+        self.correctAnswer_abcd = ''
         self.correctAnswer_1234 = ''
         self.difficulty = difficulty
         self.category = category
@@ -50,10 +51,11 @@ class Trivia:
             if self.choices[i] == self.correctAnswer:
                 self.correctAnswer_1234 = str(i+1)
                 self.correctAnswer_ABCD = to_letter(i)
+                self.correctAnswer_abcd = self.correctAnswer_ABCD.lower()
 
     def get_result(self, answer):
         if answer == self.correctAnswer or answer == self.correctAnswer_ABCD \
-                or answer == self.correctAnswer_1234:
+                or answer == self.correctAnswer_abcd or answer == self.correctAnswer_1234:
             if self.difficulty == 'easy':
                 return True, 1, "Yes, your answer is correct!"
             elif self.difficulty == 'medium':
