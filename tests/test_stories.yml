@@ -269,7 +269,7 @@ stories:
   - action: action_API
   - user: |
       I don't want to play this game anymore
-      intent: stop_game
+    intent: stop_game
   - user: |
       I want to play geo game instead
     intent: geography
