@@ -12,6 +12,7 @@ nlu:
     - let's go
     - hey dude
     - goodmorning
+    - good evening
     - goodevening
     - good afternoon
 - intent: goodbye
@@ -19,6 +20,7 @@ nlu:
     - good evening
     - good afternoon
     - cu
+    - see you
     - good by
     - cee you later
     - good night
@@ -26,6 +28,7 @@ nlu:
     - goodbye
     - have a nice day
     - see you around
+    - see you later aligator
     - bye bye
     - see you later
     - ok, good evening
@@ -104,6 +107,14 @@ nlu:
     - tell me what can you do
     - what is your purpose?
     - I would like to know what can you do
+- intent: help_selection
+  examples: |
+    - how can I select an activity?
+    - can you repeat the activities, please?
+    - what are the activities?
+    - come again, what are the activities?
+    - what do I do to select an activity?
+    - what activities are available?
 - intent: try_other_activity
   examples: |
     - I want to change to another activity
@@ -116,9 +127,16 @@ nlu:
     - NASA
     - I would like to change to NASA
     - I want to see an image of NASA
+    - I want to see an image of the galaxy
+    - I want to see an image of the universe
+    - I want to see an image of the space
     - I would like to see a NASA image
     - show me the latest discovery
-    - show le the discovery of NASA
+    - show me the discovery of NASA
+    - show me an image of galaxy
+    - show me an image of the galaxy
+    - galaxy
+    - show me an image of the universe
     - I would like to change to NASA activity
 - intent: nasa_help
   examples: |

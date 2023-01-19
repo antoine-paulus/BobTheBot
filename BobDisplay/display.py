@@ -1,7 +1,7 @@
 import multiprocessing
 import pygame
 import os
-import text
+import BobDisplay.text as text
 from enum import Enum 
 from urllib.request import urlopen
 import io

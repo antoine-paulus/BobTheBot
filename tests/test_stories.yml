@@ -90,6 +90,84 @@ stories:
     intent: bot_challenge
   - action: utter_iamabot
 
+- story: nasa
+  steps:
+  - user: |
+      hey
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      Kosma
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I want to see a NASA image
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: | 
+      Thank you very much
+    intent: thank_you
+  - user: |
+      See you next time!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_vol.2
+  steps:
+  - user: |
+      hi there
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      David
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      How can I select an activity?
+    intent: help_selection
+  - action: utter_help_selection
+  - user: |
+      I want to see a NASA image
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: | 
+      Thank you very much
+    intent: thank_you
+  - user: |
+      See you next time!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_help
+  steps:
+  - user: |
+      good afternoon
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      Clement
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      What is the NASA activity?
+    intent: nasa_help
+  - action: utter_nasa_help
+  - user: |
+      I want to see a NASA image
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+
+  - user: |
+      Okay, see you later
+    intent: goodbye
+  - action: utter_goodbye
+
 # new
 - story: play geography
   steps:
@@ -108,7 +186,7 @@ stories:
   - action: utter_connexion_geography
   - action: action_API
 
-  - story: ask geography help
+- story: ask geography help
   steps:
   - user: |
       hi
@@ -143,7 +221,7 @@ stories:
   - action: utter_connexion_trivia
   - action: action_API
 
-  - story: ask for trivia help
+- story: ask for trivia help
   steps:
   - user: |
       hi
