@@ -54,6 +54,8 @@ class ActionAPI(Action):
             else:
                 dispatcher.utter_message(text=question)
             choices = self.geoAPI.get_choices()
+            answers_text = f"{choices[0]} /{choices[1]}  /{choices[2]}  /{choices[3]}"
+            self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=choices)
             
 
@@ -101,7 +103,7 @@ class ActionAPI(Action):
             pass
         elif intent == "stop_game" :
             pass
-        elif intent == "repeat_question" :
+        elif intent == "repeat_question":
             pass
         
         else:
