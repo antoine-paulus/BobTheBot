@@ -170,7 +170,7 @@ nlu:
     - let's learn the countries
     - I would like to change to geography
     - I want to practice my geography skills
-- intent: geography
+- intent: help_geography
   examples: |
     - What is the geo game ?
     - What is the geography game ?
