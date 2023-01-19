@@ -74,7 +74,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_change_activity_trivia
+- story: nasa_change_activity_trivia_1_round
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -95,6 +95,7 @@ stories:
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
+  - intent: stop_game
   - intent: goodbye
   - action: utter_goodbye
 
@@ -177,6 +178,8 @@ stories:
   - intent: help_activity
   - action: utter_help_geography
   - intent: response_geography
+  - slot_was_set:
+      - geography_answer: C
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
