@@ -23,6 +23,7 @@ nlu:
     - good afternoon
     - cu
     - see you
+    - see u
     - good by
     - cee you later
     - good night
@@ -33,9 +34,15 @@ nlu:
     - see you later aligator
     - bye bye
     - see you later
+    - see u later
     - ok, good evening
     - good bye
     - exit
+    - see you around
+    - see you next time
+    - See you next time, bye bye
+    - bye bye, see you next time
+    - bye bye, see you later
 - intent: affirm
   examples: |
     - yes
@@ -102,6 +109,11 @@ nlu:
     - thank you
     - thanks
     - many thanks
+    - thank you very much
+    - thanks Bob
+    - thank you, I enjoyed playing with you 
+    - I enjoyed playing all the games, thank you Bob
+    - thanks, it was a pleasure playing with you
 - intent: help_bot
   examples: |
     - what can you do?
@@ -122,7 +134,10 @@ nlu:
     - I want to change to another activity
     - I want to change the activity
     - Let's change the activity
-    - What others activities do you have?
+    - Let's play something else
+    - What other activities do you have?
+    - What other activities can I do?
+    - What other activities can we do?
     - I would like to change the activity
 - intent: nasa
   examples: |
@@ -158,6 +173,9 @@ nlu:
     - I would like to change to trivia
     - I would like to play trivia
     - I want to respond to some trivia questions
+    - Bob, could you ask me some trivia questions now?
+    - could you ask me some trivia questions
+    - can you ask me some trivia questions
 - intent: help_trivia
   examples: |
     - What is trivia ?
@@ -165,11 +183,17 @@ nlu:
 - intent: geography
   examples: |
     - geography
+    - geo game
+    - I would like to play geo game
+    - I want to play geo game
     - I would like to change to geography activity
-    - I want to play the geo
+    - I want to play geo
+    - I want to play geography
     - let's learn the countries
     - I would like to change to geography
     - I want to practice my geography skills
+    - I want to test my geography skills
+    - I want to test my geography knowledge
 - intent: help_geography
   examples: |
     - What is the geo game ?
@@ -183,6 +207,7 @@ nlu:
     - I'm [Kosma](name)
     - [Jesus](name)
     - [Phillipe](name)
+    - [Philip](name)
     - [Isabelle](name)
     - [David](name)
     - [Bastian](name)
@@ -228,6 +253,7 @@ nlu:
     - [Luca](name)
     - [Luis](name)
     - [Jack](name)
+    - [Jackson](name)
     - [Jon](name)
     - [Mike](name)
     - [Michael](name)
@@ -239,6 +265,7 @@ nlu:
     - [Anthony](name)
     - [Gale](name)
     - [Lily](name)
+    - [Amy](name)
     - [Emily](name)
     - [Julia](name)
     - [Gill](name)
@@ -310,7 +337,7 @@ nlu:
     - Stop, I don't want to play anymore
     - I don't want to play the next round
     - I don't want to play anymore rounds
-
+    - I don't want to play this game anymore
 - intent: repeat_question
   examples: |
     - Can you repeat the question?
