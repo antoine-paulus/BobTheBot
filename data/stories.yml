@@ -16,7 +16,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_help
+- story: help_nasa
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -878,7 +878,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_help on activity selection
+- story: help_nasa on activity selection
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -887,7 +887,7 @@ stories:
     - name: Baptiste
   - action: action_INIT
   - action: utter_select_activity
-  - intent: nasa_help
+  - intent: help_nasa
   - action: utter_help_nasa
   - intent: nasa
   - action: utter_connexion_nasa
