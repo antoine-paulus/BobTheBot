@@ -115,11 +115,23 @@ class ActionAPI(Action):
                     self.last_activity = "trivia"
                 else :
                     self.nb_question = 0
+            else :
+                print("erreur")
 
         elif intent == "stop_game" :
+            self.nb_question = 0
             pass
+        
         elif intent == "repeat_question":
-            pass
+            if self.last_activity == "geo" : 
+                question = self.geoAPI.current_question
+                dispatcher.utter_message(text=question)
+            elif self.last_activity == "trivia":
+                question = self.triviaAPI.get_question()
+                dispatcher.utter_message(text=question)
+            else :
+                print("erreur")
+
         
         else:
             dispatcher.utter_message(text=f"Debug : custom action from intent={intent}")
