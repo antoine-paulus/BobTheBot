@@ -783,6 +783,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+# Help on one activity in the activity selection menu
 - story: help_trivia on activity selection
   steps:
   - intent: greet
