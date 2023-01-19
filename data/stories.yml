@@ -698,6 +698,7 @@ stories:
   - intent: answer
   - slot_was_set:
     - trivia_answer: c
+  - action: action_API
   - intent: stop_game
   - intent: goodbye
   - action: utter_goodbye
@@ -733,6 +734,7 @@ stories:
   - intent: answer
   - slot_was_set:
     - trivia_answer: d
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
 
@@ -776,7 +778,6 @@ stories:
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
-  - action: action_API
   - intent: answer
   - slot_was_set:
     - trivia_answer: a
