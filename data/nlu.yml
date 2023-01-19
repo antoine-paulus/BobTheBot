@@ -122,6 +122,7 @@ nlu:
     - tell me what can you do
     - what is your purpose?
     - I would like to know what can you do
+    - help
 - intent: help_selection
   examples: |
     - how can I select an activity?
@@ -130,6 +131,7 @@ nlu:
     - come again, what are the activities?
     - what do I do to select an activity?
     - what activities are available?
+    - help activities
 - intent: try_other_activity
   examples: |
     - I want to change to another activity
@@ -160,6 +162,7 @@ nlu:
 - intent: help_nasa
   examples: |
     - How can you show me the NASA discovery ?
+    - help nasa
 - intent: help_activity
   examples: |
     - how it works
@@ -182,6 +185,7 @@ nlu:
   examples: |
     - What is trivia ?
     - What's the trivia game ?
+    - help trivia
 - intent: geography
   examples: |
     - geography
@@ -200,6 +204,8 @@ nlu:
   examples: |
     - What is the geo game ?
     - What is the geography game ?
+    - help geo
+    - help geography
 - intent: give_name
   examples: |
     - my name is [Bastien](name)
@@ -316,6 +322,7 @@ nlu:
     - I'm guessing [b](answer)
     - It's for sure [c](answer)
     - I think [d][answer]
+    - I think [b] is the correct answer (answer)
 - intent: play_again
   examples: |
     - I want to play again
@@ -337,6 +344,7 @@ nlu:
     - Quit the game
     - Exit the game
     - Stop
+    - stop game
     - Quit
     - I think I'm tired of playing
     - I quit, I don't want to play anymore
