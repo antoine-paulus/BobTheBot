@@ -15,7 +15,7 @@ intents:
 - help_selection
 - try_other_activity
 - nasa
-- nasa_help
+- help_nasa
 - trivia
 - help_trivia
 - geography

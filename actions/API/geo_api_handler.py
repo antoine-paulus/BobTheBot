@@ -121,8 +121,9 @@ class GeoApiHandler:
         return choices_str
 
 
-    def check_answer(self, given_answer : str) -> None:
-        """"""
+    def check_answer(self, given_answer : str) -> str:
+        """Check the user response for the current question an return a str
+        according to if the response is correct or no"""
 
         choices_letter = [" response A", "response B", " response C", "response D"]
         if self.current_answer in choices_letter[self._current_answer_index]:
