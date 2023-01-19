@@ -94,7 +94,9 @@ class ActionAPI(Action):
 
 
         elif intent == "response_geography" :
-            pass
+            entity = tracker.latest_message['entities'][0]['value']
+            response = self.geoAPI.check_answer(entity)
+            dispatcher.utter_message(text=response)
         elif intent == "play_again" :
             pass
         elif intent == "stop_game" :
