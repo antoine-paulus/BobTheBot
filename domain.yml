@@ -74,8 +74,6 @@ responses:
   - text: Here the latest discovery of NASA
   utter_connexion_trivia:
   - text: Let's play trivia!
-  utter_play_again:
-  - text: Would you like to play again?
 actions:
 - action_API
 - action_INIT

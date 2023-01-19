@@ -109,6 +109,7 @@ stories:
   - user: | 
       Thank you very much
     intent: thank_you
+  - action: utter_welcome
   - user: |
       See you next time!
     intent: goodbye
@@ -135,8 +136,9 @@ stories:
   - action: utter_connexion_nasa
   - action: action_API
   - user: | 
-      Thank you very much
+      Thanks
     intent: thank_you
+  - action: utter_welcome
   - user: |
       See you next time!
     intent: goodbye
@@ -162,13 +164,11 @@ stories:
     intent: nasa
   - action: utter_connexion_nasa
   - action: action_API
-
   - user: |
       Okay, see you later
     intent: goodbye
   - action: utter_goodbye
 
-# new
 - story: play geography
   steps:
   - user: |
@@ -185,6 +185,47 @@ stories:
     intent: geography
   - action: utter_connexion_geography
   - action: action_API
+  - user: |
+      Answer B
+    intent: answer
+  - action: action_API
+  - user: |
+      bye bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: geography play again
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would like to do a geography test
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      Answer B
+    intent: answer
+  - action: action_API
+  - user: | 
+      I want to play again!
+    intent : play_again
+  - action: action_API
+  - user: |
+      The correct answer is c
+    intent: answer
+  - action: action_API
+  - user: |
+      bye bye
+    intent: goodbye
+  - action: utter_goodbye
 
 - story: ask geography help
   steps:
@@ -204,6 +245,14 @@ stories:
   - user: I'd like to play the geography test then.
   - action: utter_connexion_geography
   - action: action_API
+  - user: |
+      c
+    intent: answer
+  - action: action_API
+  - user: |
+      see you later
+    intent: goodbye
+  - action: utter_goodbye
 
 - story: play trivia
   steps:
@@ -217,10 +266,34 @@ stories:
   - action: action_INIT
   - action: utter_select_activity
   - user: |
-      I would like you to ask me a trivia question
+      I would like you to ask me some trivia questions
     intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
+  - user: |
+      A
+    intent: answer
+  - action: action_API
+  - user: |
+      b
+    intent: answer
+  - action: action_API
+  - user: |
+      C
+    intent: answer
+  - action: action_API
+  - user: |
+      D
+    intent: answer
+  - action: action_API
+  - user: |
+      The answer is a
+    intent: answer
+  - action: action_API
+  - user: |
+      see you
+    intent: goodbye
+  - action: utter_goodbye
 
 - story: ask for trivia help
   steps:
@@ -237,10 +310,35 @@ stories:
       What is trivia ?
     intent: help_trivia
   - action: utter_help_trivia
-  - user: I'd like to play trivia then.
+  - user: |
+      I'd like to play trivia then.
+    intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-
+  - user: |
+      I think it's B
+    intent: answer
+  - action: action_API
+  - user: |
+      D
+    intent: answer
+  - action: action_API
+  - user: |
+      The answer is c
+    intent: answer
+  - action: action_API
+  - user: |
+      A should be the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      I would say A
+    intent: answer
+  - action: action_API
+  - user: |
+      good bye
+    intent: goodbye
+  - action: utter_goodbye
   
 
 
