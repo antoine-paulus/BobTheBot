@@ -13,6 +13,7 @@ class State(Enum):
     TRIVIA = 3
     NASA = 4
     RESULT_TRIVIA = 5
+    RESULT_GEO = 6
 
 def load_images(path):
     image_list = []
@@ -36,10 +37,6 @@ def get_nasa_image(url : str):
     return image_finale
 
 
-
-
-
-
 def display_Bob(input_queue):
     """Displays the text pressed on the screen"""
     pygame.init()
@@ -54,6 +51,9 @@ def display_Bob(input_queue):
     image_nasa = pygame.image.load("./BobDisplay/data/default_image.png")
     trivia_question = "Loading..."
     trivia_answers = ["Loading...","Loading...","Loading...","Loading..."]
+    geo_question = "Loading..."
+    geo_answers = ["Loading...","Loading...","Loading...","Loading..."]
+    geo_flag = False
     user_name = "Unknown_user"
     current_face = faces[1] 
 
@@ -77,11 +77,15 @@ def display_Bob(input_queue):
 
             elif input == "geography" :
                 state = State.GEO
-                current_face = faces[6]
+                current_face = faces[5]
             
             elif input == "scoreboard_trivia" : 
                 state = State.RESULT_TRIVIA
                 current_face = faces[5]
+
+            elif input == "scoreboard_geo" : 
+                state = State.RESULT_GEO
+                current_face = faces[6]
 
             elif input[:3] == "TQ/":
                 trivia_question = input.split("/")[1]
@@ -91,6 +95,15 @@ def display_Bob(input_queue):
 
             elif input[:3] == "TU/" : 
                 user_name = input.split("/")[1]
+
+            elif input[:3] == "GQ/" : # Geo Answers. Format GQ/Which question is that question ? 
+                geo_question = input.split("/")[1]
+
+            elif input[:3] == "GA/": # Geo Answers. Format GA/A-Answer A/B-AnswerB...
+                geo_answers = input.split("/")[1:]
+
+            elif input[:3] == "GF/" : # Is Flag in geo question. Format ; GF/T or GF/F
+                geo_flag = input=="GF/T"
 
             else:
                 action = input.split(" ")
@@ -113,12 +126,39 @@ def display_Bob(input_queue):
             pass
         
         elif state == State.GEO :
-            #text = font.render(input, True, (255, 255, 255))
+            # Check if a flag has to be displayed
+            if geo_flag :
+                image = pygame.image.load("data/current_flag.png")
+                img_size = (320, 200)
+                image_geo = pygame.transform.scale(image, img_size)
+                screen.blit(image_geo, (140, 20))
+                y = 220
+            else :
+                y = 150
+            
+            # Display Question
+            question = text.format(geo_question, question_font, 50, y+40, 500, (255,255,255))
+            text.render(screen,question)
+
+            # Display Answers
+            answer_1 = text.format(geo_answers[0], font, 50, question.end_y + 25, 225, (255,255,255))
+            answer_2 = text.format(geo_answers[1], font, 300, question.end_y + 25, 225, (255,255,255))
+            y = max(answer_1.end_y,answer_2.end_y) + 10
+            answer_3 = text.format(geo_answers[2], font, 50, y, 250, (255,255,255))
+            answer_4 = text.format(geo_answers[3], font, 300, y, 250, (255,255,255))
+            text.render(screen,answer_1)
+            text.render(screen,answer_2)
+            text.render(screen,answer_3)
+            text.render(screen,answer_4)
+            
             pass
         
         elif state == State.TRIVIA :
+            # Display Question
             question = text.format(trivia_question, question_font, 50, 190, 500, (255,255,255))
             text.render(screen,question)
+
+            # Display Answers
             answer_1 = text.format(trivia_answers[0], font, 50, question.end_y + 25, 225, (255,255,255))
             answer_2 = text.format(trivia_answers[1], font, 300, question.end_y + 25, 225, (255,255,255))
             y = max(answer_1.end_y,answer_2.end_y) + 10
@@ -141,7 +181,18 @@ def display_Bob(input_queue):
                 text.render(screen,user_text)
                 text.render(screen,scoreb_text)
                 y = user_text.end_y + 10
-
+        
+        elif state == State.RESULT_GEO : 
+            text_score = text.format("Your score : " + str(usr.get_user_score(user_name,usr.Game.GEO)),question_font,300, 50, 250, (255,255,255))
+            text.render(screen,text_score)
+            score_board = usr.get_score_board(game=usr.Game.GEO)
+            y = 250
+            for score in score_board : 
+                user_text = text.format(score[1],font,15,y,125,(255,255,255))
+                scoreb_text = text.format(str(score[0]),font,140,y,100,(255,255,255))
+                text.render(screen,user_text)
+                text.render(screen,scoreb_text)
+                y = user_text.end_y + 10
 
 
         elif state == State.NASA :

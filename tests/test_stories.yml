@@ -197,6 +197,31 @@ stories:
 - story: geography play again
   steps:
   - user: |
+      what's up
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Anthony
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would like to play the geo game
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      It's C
+    intent: answer
+  - action: action_API
+  - user: |
+      bye bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: geography play again
+  steps:
+  - user: |
       hi
     intent: greet
   - action: utter_greet_global
