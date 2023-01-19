@@ -858,6 +858,27 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: help_trivia
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - intent: help_trivia
+  - action: utter_help_trivia
+  - intent: answer
+  - slot_was_set:
+    - trivia_answer: a
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
 # Help on one activity in the activity selection menu
 - story: help_trivia on activity selection
   steps:
@@ -894,6 +915,23 @@ stories:
   - intent: nasa
   - action: utter_connexion_nasa
   - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: help_nasa
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: help_nasa
+  - action: utter_help_nasa
   - intent: goodbye
   - action: utter_goodbye
 
