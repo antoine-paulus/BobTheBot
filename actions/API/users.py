@@ -64,6 +64,14 @@ def user_in_database(user_name : str) -> bool :
     data = _get_data_from_json()
     return user_name in data.keys()
 
+def get_score_board(game : Game) : 
+    score_board = []
+    data = _get_data_from_json()
+    for user in data.keys():
+        score_board.append((data[user][game.value],user))
+    score_board.sort(reverse=True)
+    return score_board
+
 def _get_data_from_json() -> dict:
     """Return the content of the json database"""
     file = open("data/user_data.json",'r')
@@ -77,6 +85,7 @@ def _write_data_on_json(data : dict) :
     json.dump(data,file)
     file.close()
 
+
 if __name__ == "__main__" : 
     print(get_user_score('jane',Game.GEO))
     print(increment_user_score('jane',Game.GEO,5))
@@ -86,3 +95,5 @@ if __name__ == "__main__" :
     print(get_user_messages('jane'))
     print(delete_user_messages('jane'))
     print(get_user_messages('jane'))
+    print(get_score_board(Game.GEO))
+    print(get_score_board(Game.TRIVIA))
