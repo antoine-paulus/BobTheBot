@@ -194,7 +194,7 @@ stories:
   - action: utter_greet_global
   - user: |
       My name's Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
@@ -212,7 +212,7 @@ stories:
   - action: utter_greet_global
   - user: |
       I am Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
@@ -229,7 +229,7 @@ stories:
   - action: utter_greet_global
   - user: |
       My name's Baptiste
-    intent: give name
+    intent: give_name
   - action: action_INIT
   - action: utter_select_activity
   - user: |
