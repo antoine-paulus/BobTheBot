@@ -653,6 +653,38 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
+- story: trivia_stop_game
+  steps:
+  - user: |
+      hey
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      My name is Julia
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would love to answer some trivia questions
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      I'll go with the answer B
+    intent: answer
+  - action: action_API
+  - user: |
+      The answer is a
+    intent: answer
+  - action: action_API
+  - - user: |
+        I have go
+      intent: stop_game
+  - user: |
+      bye
+    intent: goodbye
+  - action: utter_goodbye
+
 - story: trivia_help_selection_stop_game
   steps:
   - user: |
@@ -686,7 +718,7 @@ stories:
     intent: answer
   - action: action_API
   - user: |
-      A should be the correct answer
+      A is my answer
     intent: answer
   - action: action_API
   - user: |
@@ -700,7 +732,105 @@ stories:
       good bye
     intent: goodbye
   - action: utter_goodbye
-  
 
+- story: trivia_change_activity_nasa
+  steps:
+  - user: |
+      hello there
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      Isabelle
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I'd love to play trivia
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      A
+    intent: answer
+  - action: action_API
+  - user: |
+      B is the answer
+    intent: answer
+  - action: action_API
+  - user: |
+      Answer C
+    intent: answer
+  - action: action_API
+  - user: |
+      D
+    intent: answer
+  - action: action_API
+  - user: |
+      A
+    intent: answer
+  - action: action_API
+  - user: |
+      What other activity can you propose?
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      Show me a picture from NASA
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: |
+      alright, see you
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_stop_game_geography
+  steps:
+  - user: |
+      hi there
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      My name is Kosma
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      Let's play trivia
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      Answer a
+    intent: answer
+  - action: action_API
+  - user: |
+      b
+    intent: answer
+  - action: action_API
+  - user: |
+      I think C
+    intent: answer
+  - action: action_API
+  - user: |
+      I'm guessing D
+    intent: answer
+  - action: action_API
+  - user: |
+      Okay, I don't want to play this game anymore
+    intent: stop_game
+  - action: action_API
+  - user: |
+      I would like to play geo game now
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      I'll go with the answer B
+    intent: answer
+  - action: action_API
+  - user: |
+      alright, bye bye
+    intent: goodbye
+  - action: utter_goodbye
 
 
