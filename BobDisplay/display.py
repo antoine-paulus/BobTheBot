@@ -56,6 +56,7 @@ def display_Bob(input_queue):
     geo_flag = False
     user_name = "Unknown_user"
     current_face = faces[1] 
+    final_score = "0"
 
     running = True
     while running:
@@ -112,6 +113,8 @@ def display_Bob(input_queue):
                         image_nasa = get_nasa_image(action[1])
                     except :
                         print("ALED")
+                elif action[0] == "score" :
+                    final_score = action[1]
 
                 else :
                     state = State.IDLE
@@ -171,7 +174,7 @@ def display_Bob(input_queue):
             pass
 
         elif state == State.RESULT_TRIVIA : 
-            text_score = text.format("Your score : " + str(usr.get_user_score(user_name,usr.Game.TRIVIA)),question_font,50, 190, 500, (255,255,255))
+            text_score = text.format("Your score : " + str(final_score),question_font,50, 190, 500, (255,255,255))
             text.render(screen,text_score)
             score_board = usr.get_score_board(game=usr.Game.TRIVIA)
             y = text_score.end_y + 50
@@ -183,7 +186,7 @@ def display_Bob(input_queue):
                 y = user_text.end_y + 10
         
         elif state == State.RESULT_GEO : 
-            text_score = text.format("Your score : " + str(usr.get_user_score(user_name,usr.Game.GEO)),question_font,300, 50, 250, (255,255,255))
+            text_score = text.format("Your score : " + str(final_score),question_font,300, 50, 250, (255,255,255))
             text.render(screen,text_score)
             score_board = usr.get_score_board(game=usr.Game.GEO)
             y = 250
