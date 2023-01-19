@@ -186,6 +186,13 @@ nlu:
     - [Bastian](name)
     - [Clement](name)
     - [Lionel](name)
+    - [Baptiste](name)
+    - [Gerard](name)
+    - [Antoine](name)
+    - [Vincent](name)
+    - [Valentin](name)
+    - [Faty](name)
+    - [Fatima](name)
 - intent: response_trivia
   examples: |
     - it's [a](trivia_answer)
