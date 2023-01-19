@@ -1,6 +1,6 @@
 from random import randint
 import requests
-import actions.API.users
+import actions.API.users as users
 
 FLAG_IMG_PATH = "./data/current_flag.png"
 NUM_RESPONSES = 4
@@ -125,10 +125,10 @@ class GeoApiHandler:
         """Check the user response for the current question an return a str
         according to if the response is correct or no"""
 
-        choices_letter = [" response A", "response B", " response C", "response D"]
-        if self.current_answer in choices_letter[self._current_answer_index]:
+        choices_letter = ["response A", "response B", " response C", "response D"]
+        if given_answer in choices_letter[self._current_answer_index]:
             users.increment_user_score(self.user_name, users.Game.GEO)
-            return f"Great this is the good answer ! Your score is {users.get_user_score(self.user_name, users.Game.GEO)}"
+            return f"Great, this is the good answer ! Your score is now of {users.get_user_score(self.user_name, users.Game.GEO)}"
         else:
             return f"No sorry, the correct answer is {self.current_answer}"
 
