@@ -125,8 +125,8 @@ class GeoApiHandler:
         """Check the user response for the current question an return a str
         according to if the response is correct or no"""
 
-        choices_letter = ["response A", "response B", " response C", "response D"]
-        if given_answer in choices_letter[self._current_answer_index]:
+        choices_letter = ["RESPONSE A", "RESPONSE B", " RESPONSE C", "RESPONSE D"]
+        if given_answer.upper() in choices_letter[self._current_answer_index]:
             users.increment_user_score(self.user_name, users.Game.GEO)
             return f"Great, this is the good answer ! Your score is now of {users.get_user_score(self.user_name, users.Game.GEO)}"
         else:
