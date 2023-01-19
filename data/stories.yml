@@ -868,7 +868,7 @@ stories:
   - intent: help_trivia
   - action: utter_help_trivia
   - intent: trivia
-  - action: utter_connexionn_trivia
+  - action: utter_connexion_trivia
   - action: action_API
   - intent: response_trivia
   - action: action_API
