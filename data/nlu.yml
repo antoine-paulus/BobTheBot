@@ -43,6 +43,7 @@ nlu:
     - See you next time, bye bye
     - bye bye, see you next time
     - bye bye, see you later
+    - alright, see you
 - intent: affirm
   examples: |
     - yes
@@ -139,6 +140,7 @@ nlu:
     - What other activities can I do?
     - What other activities can we do?
     - I would like to change the activity
+    - What other activity can you propose?
 - intent: nasa
   examples: |
     - NASA
@@ -310,6 +312,10 @@ nlu:
     - The answer is [B](answer)
     - [C](answer)
     - [D](answer)
+    - I would say [a](answer)
+    - I'm guessing [b](answer)
+    - It's for sure [c](answer)
+    - I think [d][answer]
 - intent: play_again
   examples: |
     - I want to play again
@@ -338,6 +344,9 @@ nlu:
     - I don't want to play the next round
     - I don't want to play anymore rounds
     - I don't want to play this game anymore
+    - I have go
+    - i gotta go
+    - I've got to go
 - intent: repeat_question
   examples: |
     - Can you repeat the question?
