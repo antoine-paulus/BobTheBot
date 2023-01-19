@@ -58,7 +58,7 @@ class ActionAPI(Action):
             answers_text = f"{choices[0]} /{choices[1]}  /{choices[2]}  /{choices[3]}"
             self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=choices)
-            self.last_activity = "gro"
+            self.last_activity = "geo"
             
 
         elif intent == "trivia" :
