@@ -275,14 +275,14 @@ nlu:
     - [Demar](name)
 - intent: answer
   examples: |
-    - it's [a](geography_answer)
-    - I think it's [b](geography_answer)
-    - [c](geography_answer) is the answer
-    - [d](geography_answer)
-    - [A](geography_answer)
-    - The answer is [B](geography_answer)
-    - [C](geography_answer)
-    - [D](geography_answer)
+    - it's [a](answer)
+    - I think it's [b](answer)
+    - [c](answer) is the answer
+    - [d](answer)
+    - [A](answer)
+    - The answer is [B](answer)
+    - [C](answer)
+    - [D](answer)
 - intent: play_again
   examples: |
     - I want to play again
