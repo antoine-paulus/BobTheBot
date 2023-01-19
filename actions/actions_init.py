@@ -26,9 +26,8 @@ class ActionINIT(Action):
         print(f"\nintent = {intent}\n")
 
         if intent == "give_name" :
-            dispatcher.utter_message(text=f"Debug : entity recognized={entity}")
 
-            name_in_db = True
+            name_in_db = False
 
             if name_in_db :
                 dispatcher.utter_message(text=f"Welcome back !")

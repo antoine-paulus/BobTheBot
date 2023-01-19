@@ -36,6 +36,7 @@ class ActionAPI(Action):
         self.nb_question = 0
         self.nb_question_max = 5
         self.current_score = 0
+        self.last_activity = ""
 
     def name(self) -> Text:
         return "action_API"
@@ -57,9 +58,11 @@ class ActionAPI(Action):
             answers_text = f"{choices[0]} /{choices[1]}  /{choices[2]}  /{choices[3]}"
             self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=choices)
+            self.last_activity = "gro"
             
 
         elif intent == "trivia" :
+            self.nb_question +=1
             self.display_queue.put(b"trivia")
             question = self.triviaAPI.get_question()
             dispatcher.utter_message(text=question)
@@ -69,6 +72,7 @@ class ActionAPI(Action):
             answers_text = f"A = {answer[0]}  /B = {answer[1]}  /C = {answer[2]}  /D = {answer[3]}"
             self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
             dispatcher.utter_message(text=answers_text)
+            self.last_activity = "trivia"
         
 
 
@@ -78,29 +82,40 @@ class ActionAPI(Action):
             print("action.py => NASA")
             display_image = "image_nasa "+image
             self.display_queue.put(bytes(display_image, encoding='utf8'))
-
             txt = self.nasaAPI.get_description()
-
             dispatcher.utter_message(text = txt)
+            self.last_activity = "nasa"
 
-        elif intent == "response_trivia" :
-            entity = tracker.latest_message['entities'][0]['value']
+        elif intent == "answer" :
+            if self.last_activity == "geo" : 
+                entity = tracker.latest_message['entities'][0]['value']
+                response = self.geoAPI.check_answer(entity)
+                dispatcher.utter_message(text=response)
 
-            response = self.triviaAPI.get_result(entity)
+            elif self.last_activity == "trivia":
+                entity = tracker.latest_message['entities'][0]['value']
+                response = self.triviaAPI.get_result(entity)
 
+                if response[0] :
+                    dispatcher.utter_message(text=f"Bravo, réponse {entity} correct")
+                else :
+                    dispatcher.utter_message(text=f"Raté,  réponse {entity} incorrecte")
+                
+                if self.nb_question < 5 :
+                    self.nb_question +=1
+                    self.display_queue.put(b"trivia")
+                    question = self.triviaAPI.get_question()
+                    dispatcher.utter_message(text=question)
+                    self.display_queue.put(bytes("TQ/"+question,encoding='utf8'))
+                    
+                    answer = self.triviaAPI.get_choices()
+                    answers_text = f"A = {answer[0]}  /B = {answer[1]}  /C = {answer[2]}  /D = {answer[3]}"
+                    self.display_queue.put(bytes("TA/"+answers_text,encoding='utf8'))
+                    dispatcher.utter_message(text=answers_text)
+                    self.last_activity = "trivia"
+                else :
+                    self.nb_question = 0
 
-            if response[0] :
-                dispatcher.utter_message(text="Bravo")
-            else :
-                dispatcher.utter_message(text="Raté")
-
-
-        elif intent == "response_geography" :
-            entity = tracker.latest_message['entities'][0]['value']
-            response = self.geoAPI.check_answer(entity)
-            dispatcher.utter_message(text=response)
-        elif intent == "play_again" :
-            pass
         elif intent == "stop_game" :
             pass
         elif intent == "repeat_question":
