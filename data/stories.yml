@@ -210,26 +210,26 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_deny_request_play_again
-  steps:
-  - intent: greet
-  - action: utter_greet_global
-  - intent: give_name
-    entities:
-    - name: Kosma
-  - action: action_INIT
-  - action: utter_select_activity
-  - intent: geography
-  - action: utter_connexion_geography
-  - action: action_API
-  - intent: response_geography
-  - slot_was_set:
-    - geography_answer: C
-  - action: action_API
-  - action: utter_play_again
-  - intent: deny
-  - intent: goodbye
-  - action: utter_goodbye
+#- story: geography_deny_request_play_again
+#  steps:
+#  - intent: greet
+#  - action: utter_greet_global
+#  - intent: give_name
+#    entities:
+#    - name: Kosma
+#  - action: action_INIT
+#  - action: utter_select_activity
+#  - intent: geography
+#  - action: utter_connexion_geography
+#  - action: action_API
+#  - intent: response_geography
+#  - slot_was_set:
+#    - geography_answer: C
+#  - action: action_API
+#  - action: utter_play_again
+#  - intent: deny
+#  - intent: goodbye
+#  - action: utter_goodbye
 
 - story: geography_play_again_intent
   steps:
@@ -691,19 +691,19 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: b
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: d
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: c
   - intent: stop_game
@@ -723,23 +723,23 @@ stories:
   - action: utter_connexion_trivia
   - action: action_API
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: d
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: c
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: b
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: d
   - intent: goodbye
@@ -757,7 +757,7 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: c
   - action: action_API
@@ -779,24 +779,24 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - intent: help_activity
   - action: utter_help_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: b
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: a
   - action: action_API
@@ -817,19 +817,19 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
@@ -848,7 +848,7 @@ stories:
   - action: action_API
   - intent: repeat_question
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - slot_was_set:
     - trivia_answer: b
   - action: action_API
@@ -870,7 +870,7 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - intent: response_trivia
+  - intent: answer
   - action: action_API
   - slot_was_set:
     - trivia_answer: a
@@ -909,7 +909,7 @@ stories:
   - intent: geography
   - action: utter_connexion_geography
   - action: action_API
-  - intent: response_geography
+  - intent: answer
   - slot_was_set:
     - geography_answer: B
   - action: action_API
