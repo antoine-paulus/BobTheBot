@@ -1,6 +1,7 @@
 #### This file contains tests to evaluate that your bot behaves as expected.
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
+# random stories
 stories:
 - story: happy path 1
   steps:
@@ -90,6 +91,7 @@ stories:
     intent: bot_challenge
   - action: utter_iamabot
 
+# NASA test stories
 - story: nasa
   steps:
   - user: |
@@ -115,32 +117,24 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
-- story: nasa_vol.2
+- story: nasa_vol2
   steps:
   - user: |
-      hi there
+      Hi what's up
     intent: greet
   - action: utter_greet_global
   - user: |
-      David
+      I'm Jackson
     intent: give_name
   - action: action_INIT
   - action: utter_select_activity
-  - user: |
-      How can I select an activity?
-    intent: help_selection
-  - action: utter_help_selection
   - user: |
       I want to see a NASA image
     intent: nasa
   - action: utter_connexion_nasa
   - action: action_API
-  - user: | 
-      Thanks
-    intent: thank_you
-  - action: utter_welcome
   - user: |
-      See you next time!
+      see you around Bob
     intent: goodbye
   - action: utter_goodbye
 
@@ -169,6 +163,140 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
+- story: nasa_help_selection
+  steps:
+  - user: |
+      hi there
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      David
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      How can I select an activity?
+    intent: help_selection
+  - action: utter_help_selection
+  - user: |
+      I want to see a NASA image
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: | 
+      Thanks
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      See you next time!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_change_activity_geo_play_again
+  steps:
+  - user: |
+      hi there
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      Amy
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      Show me a NASA image please
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: |
+      Let's do another activity
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      I want to test my geography skills
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      C should be the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      I want to play again!
+    intent: play_again
+  - action: action_API
+  - user: |
+      D
+    intent: answer
+  - action: action_API
+  - user: | 
+      Thank you very much, that would be all for today Bob
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      See you next time!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_change_activity_trivia_stop_game_change_activity_geo_play_again
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      Philip
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would love to see NASA's latest discovery
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: |
+      Let's change the activity activity
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      Bob, could you ask me some trivia questions now?
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: | 
+      I believe the correct answer is A
+    intent: answer
+  - action: action_API
+  - user: |
+      I don't want to play this game anymore
+      intent: stop_game
+  - user: |
+      I want to play geo game instead
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      C should be the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      Let's have another round
+    intent: play_again
+  - action: action_API
+  - user: |
+      D
+    intent: answer
+  - action: action_API
+  - user: | 
+      Thank you Bob, I enjoyed playing with you today
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      See you tomorrow!
+    intent: goodbye
+  - action: utter_goodbye
+
+# GEO test stories
 - story: play geography
   steps:
   - user: |
@@ -194,7 +322,7 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
-- story: geography play again
+- story: geography help selection
   steps:
   - user: |
       what's up
@@ -205,6 +333,10 @@ stories:
     intent: give name
   - action: action_INIT
   - action: utter_select_activity
+  - user: |
+      How can I choose an activity?
+    intent: help_selection
+  - action: utter_help_selection
   - user: |
       I would like to play the geo game
     intent: geography
@@ -248,11 +380,15 @@ stories:
     intent: answer
   - action: action_API
   - user: |
+      Thank you Bob
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
       bye bye
     intent: goodbye
   - action: utter_goodbye
 
-- story: ask geography help
+- story: geography help_geography
   steps:
   - user: |
       hi
@@ -281,6 +417,152 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
+- story: geography_change_activity_nasa
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Baptiste
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      I would like to play geo game
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      I think B is the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      Let's play something else
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      I would like to see a NASA discovery
+    intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - user: |
+      Thank you very much
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      See you next time, bye bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_change_activity_trivia
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Patrick
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      Let's play geo game
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      I would say D is the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      Maybe let's change the activity now
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      Let's do some trivia
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      A
+    intent: answer
+  - action: action_API
+  - user: |
+      b is the answer
+    intent: answer
+  - action: action_API
+  - user: |
+      C is the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      I would say D
+    intent: answer
+  - action: action_API
+  - user: |
+      The answer is a
+    intent: answer
+  - action: action_API
+  - user: |
+      Thanks Bob
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      See you later aligator
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: geography_change_activity_trivia_stop_game
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      I am Patrick
+    intent: give name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      Let's play geo game
+    intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - user: |
+      I would say D is the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      Maybe let's change the activity now
+    intent: try_other_activity
+  - action: utter_select_activity
+  - user: |
+      Let's do some trivia
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      A
+    intent: answer
+  - action: action_API
+  - user: |
+      b is the answer
+    intent: answer
+  - action: action_API
+  - user: |
+      C is the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      I think I had enough for today
+    intent: stop_game
+  - user: |
+      See you next time Bob
+    intent: goodbye
+  - action: utter_goodbye
+
+# TRIVIA test stories
 - story: play trivia
   steps:
   - user: |
@@ -322,7 +604,7 @@ stories:
     intent: goodbye
   - action: utter_goodbye
 
-- story: ask for trivia help
+- story: trivia_help
   steps:
   - user: |
       hi
@@ -362,6 +644,58 @@ stories:
       I would say A
     intent: answer
   - action: action_API
+  - user: | 
+      I enjoyed playing with you, thanks
+    intent: thank_you
+  - action: utter_welcome
+  - user: |
+      good bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: trivia_help_selection_stop_game
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet_global
+  - user: |
+      My name is Harry
+    intent: give_name
+  - action: action_INIT
+  - action: utter_select_activity
+  - user: |
+      What do I do to select an activity?
+    intent: help_selection
+  - action: utter_help_selection
+  - user: |
+     Let's do some trivia questions
+    intent: trivia
+  - action: utter_connexion_trivia
+  - action: action_API
+  - user: |
+      I think it's B
+    intent: answer
+  - action: action_API
+  - user: |
+      I would say D
+    intent: answer
+  - action: action_API
+  - user: |
+      The answer is c
+    intent: answer
+  - action: action_API
+  - user: |
+      A should be the correct answer
+    intent: answer
+  - action: action_API
+  - user: |
+      I think I've had enough for today
+    intent: stop_game
+  - user: | 
+      thanks for today Bob
+    intent: thank_you
+  - action: utter_welcome
   - user: |
       good bye
     intent: goodbye
