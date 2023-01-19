@@ -121,7 +121,7 @@ stories:
   - action: utter_select_activity
   - user: |
       What is the geo game ?
-    intent: geography_help
+    intent: help_geography
   - user: I'd like to play the geography test then.
   - action: utter_connexion_geography
   - action: action_API
@@ -156,7 +156,7 @@ stories:
   - action: utter_select_activity
   - user: |
       What is trivia ?
-    intent: trivia_help
+    intent: help_trivia
   - user: I'd like to play trivia then.
   - action: utter_connexion_trivia
   - action: action_API

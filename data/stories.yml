@@ -101,7 +101,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_help
+- story: help_geography
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -122,7 +122,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: geography_help_vol.2
+- story: help_geography_vol.2
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -726,7 +726,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: trivia_help
+- story: help_trivia
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -783,3 +783,62 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: help_trivia on activity selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: help_trivia
+  - action: utter_help_trivia
+  - intent: trivia
+  - action: utter_connexionn_trivia
+  - action: action_API
+  - intent: response_trivia
+  - action: action_API
+  - slot_was_set:
+    - trivia_answer: a
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: nasa_help on activity selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: nasa_help
+  - action: utter_help_nasa
+  - intent: nasa
+  - action: utter_connexion_nasa
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: help_geography on activity selection
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Baptiste
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: help_geography
+  - action: utter_help_geography
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: response_geography
+  - slot_was_set:
+    - geography_answer: B
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye

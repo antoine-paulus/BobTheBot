@@ -16,9 +16,9 @@ intents:
 - nasa
 - nasa_help
 - trivia
-- trivia_help
+- help_trivia
 - geography
-- geography_help
+- help_geography
 - give_name
 - response_trivia
 - response_geography

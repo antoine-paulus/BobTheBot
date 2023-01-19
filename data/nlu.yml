@@ -138,7 +138,7 @@ nlu:
     - I would like to change to trivia
     - I would like to play trivia
     - I want to respond to some trivia questions
-- intent: trivia_help
+- intent: help_trivia
   examples: |
     - What is trivia ?
     - What's the trivia game ?
