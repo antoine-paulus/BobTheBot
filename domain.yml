@@ -27,16 +27,12 @@ intents:
 - repeat_question
 entities:
 - name
-- trivia_answer
-- geography_answer
+- answer
 slots:
-  geography_answer:
+  answer:
     type: text
     influence_conversation: true
   name:
-    type: text
-    influence_conversation: true
-  trivia_answer:
     type: text
     influence_conversation: true
 responses:
