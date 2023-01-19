@@ -179,6 +179,13 @@ nlu:
     - I am [Beatrice](name)
     - My name is [Roger](name)
     - I'm [Kosma](name)
+    - [Jesus](name)
+    - [Phillipe](name)
+    - [Isabelle](name)
+    - [David](name)
+    - [Bastian](name)
+    - [Clement](name)
+    - [Lionel](name)
 - intent: response_trivia
   examples: |
     - it's [a](trivia_answer)
