@@ -719,7 +719,6 @@ stories:
   - intent: trivia
   - action: utter_connexion_trivia
   - action: action_API
-  - action: action_API
   - intent: answer
   - slot_was_set:
     - trivia_answer: d
