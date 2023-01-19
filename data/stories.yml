@@ -917,3 +917,24 @@ stories:
   - action: action_API
   - intent: goodbye
   - action: utter_goodbye
+
+- story: help_geography
+  steps:
+  - intent: greet
+  - action: utter_greet_global
+  - intent: give_name
+    entities:
+    - name: Yasmin
+  - action: action_INIT
+  - action: utter_select_activity
+  - intent: geography
+  - action: utter_connexion_geography
+  - action: action_API
+  - intent: help_geography
+  - action: utter_help_geography
+  - intent: answer
+  - slot_was_set:
+    - geography_answer: B
+  - action: action_API
+  - intent: goodbye
+  - action: utter_goodbye
