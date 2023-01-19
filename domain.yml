@@ -56,7 +56,7 @@ responses:
       or show you the latest NASA discovery.
   utter_help_selection:
   - text: To choose an activity, simply say "NASA", "Geography" or "Trivia". You have
-      also the liberty to say any phrase that corresponds to one of these three subjects.
+      also the liberty to say a phrase that corresponds to one of these three subjects.
   utter_help_nasa:
   - text: I can show you the latest NASA discovery and read you the description.
   utter_help_trivia:
