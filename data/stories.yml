@@ -499,7 +499,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: trivia_deny_request_play_again
+- story: trivia_play_again_vol.2
   steps:
   - intent: greet
   - action: utter_greet_global
@@ -530,6 +530,7 @@ stories:
   - intent: answer
   - slot_was_set:
     - trivia_answer: a
+  - action: action_API
   - intent: goodbye
   - action: utter_goodbye
 
@@ -564,6 +565,7 @@ stories:
   - intent: answer
   - slot_was_set:
     - trivia_answer: a
+  - action: action_API
   - intent: play_again
   - action: action_API
   - intent: answer
@@ -663,6 +665,7 @@ stories:
   - intent: answer
   - slot_was_set:
     - trivia_answer: a
+  - action: action_API
   - intent: try_other_activity
   - action: utter_select_activity
   - intent: nasa
