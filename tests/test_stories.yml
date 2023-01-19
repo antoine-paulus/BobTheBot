@@ -677,9 +677,9 @@ stories:
       The answer is a
     intent: answer
   - action: action_API
-  - - user: |
-        I have go
-      intent: stop_game
+  - user: |
+      I have to go
+    intent: stop_game
   - user: |
       bye
     intent: goodbye
