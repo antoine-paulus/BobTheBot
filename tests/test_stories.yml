@@ -242,7 +242,8 @@ stories:
       What is the geo game ?
     intent: help_geography
   - action: utter_help_geography
-  - user: I'd like to play the geography test then.
+  - user: |
+      I'd like to play the geography test then.
   - action: utter_connexion_geography
   - action: action_API
   - user: |
