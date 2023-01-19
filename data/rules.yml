@@ -14,6 +14,5 @@ rules:
   - action: utter_welcome
 - rule: give the name at each time the bot ask the name
   steps:
-  - action: utter_greet_global
   - intent: give_name
   - action: action_INIT
