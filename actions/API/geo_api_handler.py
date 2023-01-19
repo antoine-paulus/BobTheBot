@@ -114,11 +114,11 @@ class GeoApiHandler:
         """"""
 
         responses = self._generate_responses(self.current_country_name)
-        choices_str = ""
+        choices = []
         choices_letter = ["A:", "B:", "C:", "D:"]
         for (i, letter) in enumerate(choices_letter):
-            choices_str += "response " + letter + " " + responses[i] + "\n"
-        return choices_str
+            choices.append(f"{choices_letter} {responses[i]}")
+        return choices
 
 
     def check_answer(self, given_answer : str) -> str:
