@@ -244,6 +244,7 @@ stories:
   - action: utter_help_geography
   - user: |
       I'd like to play the geography test then.
+    intent: geography
   - action: utter_connexion_geography
   - action: action_API
   - user: |
