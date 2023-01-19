@@ -37,6 +37,7 @@ class ActionAPI(Action):
         self.nb_question_max = 5
         self.current_score = 0
         self.last_activity = ""
+        self.current_player = ""
 
     def name(self) -> Text:
         return "action_API"
@@ -62,7 +63,10 @@ class ActionAPI(Action):
             
 
         elif intent == "trivia" :
-            self.nb_question +=1
+            self.nb_question = 1
+            self.current_score = 0
+            self.triviaAPI.generate_question()
+
             self.display_queue.put(b"trivia")
             question = self.triviaAPI.get_question()
             dispatcher.utter_message(text=question)
@@ -97,12 +101,18 @@ class ActionAPI(Action):
                 response = self.triviaAPI.get_result(entity)
 
                 if response[0] :
-                    dispatcher.utter_message(text=f"Bravo, réponse {entity} correct")
+                    dispatcher.utter_message(text=response[2])
+                    #dispatcher.utter_message(text=f"Bravo, réponse {entity} correct {self.nb_question}/5")
+                    self.current_score += response[1]
+
                 else :
-                    dispatcher.utter_message(text=f"Raté,  réponse {entity} incorrecte")
+                    dispatcher.utter_message(text=response[2])
+                    #dispatcher.utter_message(text=f"Raté,  réponse {entity} incorrecte {self.nb_question}/5")
+                    
                 
                 if self.nb_question < 5 :
                     self.nb_question +=1
+                    self.triviaAPI.generate_question()
                     self.display_queue.put(b"trivia")
                     question = self.triviaAPI.get_question()
                     dispatcher.utter_message(text=question)
@@ -115,11 +125,16 @@ class ActionAPI(Action):
                     self.last_activity = "trivia"
                 else :
                     self.nb_question = 0
+                    dispatcher.utter_message(text=f"Well done, you achieved a score of {self.current_score} !")
+                    self.display_queue.put(b"scoreboard_trivia")
+
+
             else :
                 print("erreur")
 
         elif intent == "stop_game" :
             self.nb_question = 0
+            self.current_score = 0
             pass
         
         elif intent == "repeat_question":
