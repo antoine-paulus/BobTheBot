@@ -138,7 +138,7 @@ nlu:
     - galaxy
     - show me an image of the universe
     - I would like to change to NASA activity
-- intent: nasa_help
+- intent: help_nasa
   examples: |
     - How can you show me the NASA discovery ?
 - intent: help_activity
