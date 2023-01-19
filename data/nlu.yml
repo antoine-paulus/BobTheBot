@@ -271,17 +271,7 @@ nlu:
     - [Hermione](name)
     - [Natalie](name)
     - [Demar](name)
-- intent: response_trivia
-  examples: |
-    - it's [a](trivia_answer)
-    - I think it's [b](trivia_answer)
-    - [c](trivia_answer) is the answer
-    - [d](trivia_answer)
-    - The answer is [A](trivia_answer)
-    - [B](trivia_answer)
-    - [C](trivia_answer)
-    - [D](trivia_answer)
-- intent: response_geography
+- intent: answer
   examples: |
     - it's [a](geography_answer)
     - I think it's [b](geography_answer)
