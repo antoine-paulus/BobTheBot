@@ -2,6 +2,7 @@ import multiprocessing
 import pygame
 import os
 import BobDisplay.text as text
+import actions.API.users as usr
 from enum import Enum 
 from urllib.request import urlopen
 import io
@@ -11,6 +12,7 @@ class State(Enum):
     GEO = 2
     TRIVIA = 3
     NASA = 4
+    RESULT_TRIVIA = 5
 
 def load_images(path):
     image_list = []
@@ -52,6 +54,7 @@ def display_Bob(input_queue):
     image_nasa = pygame.image.load("./BobDisplay/data/default_image.png")
     trivia_question = "Loading..."
     trivia_answers = ["Loading...","Loading...","Loading...","Loading..."]
+    user_name = "Unknown_user"
     current_face = faces[1] 
 
     running = True
@@ -75,12 +78,19 @@ def display_Bob(input_queue):
             elif input == "geography" :
                 state = State.GEO
                 current_face = faces[6]
+            
+            elif input == "scoreboard_trivia" : 
+                state = State.RESULT_TRIVIA
+                current_face = faces[5]
 
             elif input[:3] == "TQ/":
                 trivia_question = input.split("/")[1]
             
             elif input[:3] == "TA/":
                 trivia_answers = input.split("/")[1:]
+
+            elif input[:3] == "TU/" : 
+                user_name = input.split("/")[1]
 
             else:
                 action = input.split(" ")
@@ -119,6 +129,20 @@ def display_Bob(input_queue):
             text.render(screen,answer_3)
             text.render(screen,answer_4)
             pass
+
+        elif state == State.RESULT_TRIVIA : 
+            text_score = text.format("Your score : " + str(usr.get_user_score(user_name,usr.Game.TRIVIA)),question_font,50, 190, 500, (255,255,255))
+            text.render(screen,text_score)
+            score_board = usr.get_score_board(game=usr.Game.TRIVIA)
+            y = text_score.end_y + 50
+            for score in score_board : 
+                user_text = text.format(score[1],font,50,y,400,(255,255,255))
+                scoreb_text = text.format(str(score[0]),font,450,y,100,(255,255,255))
+                text.render(screen,user_text)
+                text.render(screen,scoreb_text)
+                y = user_text.end_y + 10
+
+
 
         elif state == State.NASA :
             screen.blit(image_nasa, (0, 0))
