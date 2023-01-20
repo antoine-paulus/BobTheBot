@@ -30,11 +30,9 @@ class ActionINIT(Action):
             name_in_db = False
 
             if name_in_db :
-                dispatcher.utter_message(text=f"Welcome back !")
+                dispatcher.utter_message(text=f"Welcome back ! What do you want to do.")
             else:
-                dispatcher.utter_message(text=f"Hello {entity} nice to meet you !")
-                dispatcher.utter_message(text=f"I am Bob your personnal assistant")
-                dispatcher.utter_message(text=f"If you ever need help just say help or help followed by the activity you need more information about")
+                dispatcher.utter_message(text=f"Hello {entity} nice to meet you ! I am Bob your personnal assistant. If you ever need help just say help or help followed by the activity you need more information about. What do you want to do ?")
 
 
         else:
