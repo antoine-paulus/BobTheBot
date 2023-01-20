@@ -9,12 +9,14 @@ nlu:
     - good morning
     - moin
     - hey there
-    - let's go
     - hey dude
+    - hey man
+    - yo
     - goodmorning
     - good evening
     - goodevening
     - good afternoon
+    - goodafternoon
     - what's up
     - hey what's up
 - intent: goodbye
