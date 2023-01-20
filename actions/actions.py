@@ -90,6 +90,10 @@ class ActionAPI(Action):
         if update_display :
             answers_text = f"{answers[0]} /{answers[1]} /{answers[2]} /{answers[3]}"
             self.display_queue.put(b"geography")
+            if type == "flag":
+                self.display_queue.put(bytes("GF/T",encoding='utf8'))
+            else:
+                self.display_queue.put(bytes("GF/F",encoding='utf8'))
             self.display_queue.put(bytes("GQ/"+question,encoding='utf8'))
             self.display_queue.put(bytes("GA/"+answers_text,encoding='utf8'))
 
@@ -128,6 +132,7 @@ class ActionAPI(Action):
                 entity = tracker.latest_message['entities'][0]['value']
                 response = self.geoAPI.check_answer(entity)
                 dispatcher.utter_message(text=response)
+                self.display_queue.put(b'IDLE')
 
             elif self.last_activity == "trivia":
                 entity = tracker.latest_message['entities'][0]['value']
@@ -170,8 +175,7 @@ class ActionAPI(Action):
             elif self.last_activity == "trivia":
                 self.question_Trivia(dispatcher,regenerate=True,update_display=True,reset_score=True)
             else :
-                print("erreur")
-
+                dispatcher.utter_message(text=f"Maybe we should initiate a game today before trying to play again.")
         else:
             if self.compteur_incompris < 2 :
                 dispatcher.utter_message(text=f"I did not understood what you just said, may you repeat ?")

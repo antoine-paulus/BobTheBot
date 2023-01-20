@@ -115,7 +115,7 @@ class GeoApiHandler:
 
         responses = self._generate_responses(self.current_country_name)
         choices = []
-        choices_letter = ["A=", "B=", "C=", "D="]
+        choices_letter = ["A =", "B =", "C =", "D ="]
         for (i, letter) in enumerate(choices_letter):
             choices.append(f"{choices_letter[i]} {responses[i]}")
         return choices
@@ -128,9 +128,10 @@ class GeoApiHandler:
         choices_letter = ["RESPONSE A", "RESPONSE B", " RESPONSE C", "RESPONSE D"]
         if given_answer.upper() in choices_letter[self._current_answer_index]:
             users.increment_user_score(self.user_name, users.Game.GEO)
-            return f"Great, this is the good answer ! Your score is now of {users.get_user_score(self.user_name, users.Game.GEO)}"
+            return f"Congratulation, this is the good answer !"
+            #return f"Congratulation, this is the good answer ! Your score is now of {users.get_user_score(self.user_name, users.Game.GEO)}"
         else:
-            return f"No sorry, the correct answer is {self.current_answer}"
+            return f"No sorry, the correct answer was {self.current_answer}"
 
 
 if __name__ == '__main__':
