@@ -42,7 +42,7 @@ def display_Bob(input_queue):
     pygame.init()
     screen = pygame.display.set_mode((600, 500))
     pygame.display.set_caption("Key Display")
-    question_font = pygame.font.SysFont('ubuntu',25, bold=True)
+    question_font = pygame.font.SysFont('ubuntu',30, bold=True)
     font = pygame.font.SysFont('ubuntu', 20)
     faces = load_images("./BobDisplay/data/visage_bob")
     state = State.IDLE
@@ -57,6 +57,7 @@ def display_Bob(input_queue):
     user_name = "Unknown_user"
     current_face = faces[1] 
     final_score = "0"
+    txt_color = (92,244,228)
 
     running = True
     while running:
@@ -140,15 +141,15 @@ def display_Bob(input_queue):
                 y = 150
             
             # Display Question
-            question = text.format(geo_question, question_font, 50, y+40, 500, (255,255,255))
+            question = text.format(geo_question, question_font, 50, y+40, 500, txt_color)
             text.render(screen,question)
 
             # Display Answers
-            answer_1 = text.format(geo_answers[0], font, 50, question.end_y + 25, 225, (255,255,255))
-            answer_2 = text.format(geo_answers[1], font, 300, question.end_y + 25, 225, (255,255,255))
+            answer_1 = text.format(geo_answers[0], font, 50, question.end_y + 25, 225, txt_color)
+            answer_2 = text.format(geo_answers[1], font, 300, question.end_y + 25, 225, txt_color)
             y = max(answer_1.end_y,answer_2.end_y) + 10
-            answer_3 = text.format(geo_answers[2], font, 50, y, 250, (255,255,255))
-            answer_4 = text.format(geo_answers[3], font, 300, y, 250, (255,255,255))
+            answer_3 = text.format(geo_answers[2], font, 50, y, 250, txt_color)
+            answer_4 = text.format(geo_answers[3], font, 300, y, 250,txt_color)
             text.render(screen,answer_1)
             text.render(screen,answer_2)
             text.render(screen,answer_3)
@@ -158,15 +159,15 @@ def display_Bob(input_queue):
         
         elif state == State.TRIVIA :
             # Display Question
-            question = text.format(trivia_question, question_font, 50, 190, 500, (255,255,255))
+            question = text.format(trivia_question, question_font, 50, 190, 500, txt_color)
             text.render(screen,question)
 
             # Display Answers
-            answer_1 = text.format(trivia_answers[0], font, 50, question.end_y + 25, 225, (255,255,255))
-            answer_2 = text.format(trivia_answers[1], font, 300, question.end_y + 25, 225, (255,255,255))
+            answer_1 = text.format(trivia_answers[0], font, 50, question.end_y + 25, 225, txt_color)
+            answer_2 = text.format(trivia_answers[1], font, 300, question.end_y + 25, 225, txt_color)
             y = max(answer_1.end_y,answer_2.end_y) + 10
-            answer_3 = text.format(trivia_answers[2], font, 50, y, 250, (255,255,255))
-            answer_4 = text.format(trivia_answers[3], font, 300, y, 250, (255,255,255))
+            answer_3 = text.format(trivia_answers[2], font, 50, y, 250, txt_color)
+            answer_4 = text.format(trivia_answers[3], font, 300, y, 250,txt_color)
             text.render(screen,answer_1)
             text.render(screen,answer_2)
             text.render(screen,answer_3)
@@ -174,25 +175,25 @@ def display_Bob(input_queue):
             pass
 
         elif state == State.RESULT_TRIVIA : 
-            text_score = text.format("Your score : " + str(final_score),question_font,50, 190, 500, (255,255,255))
+            text_score = text.format("Your score : " + str(final_score),question_font,50, 190, 500, txt_color)
             text.render(screen,text_score)
             score_board = usr.get_score_board(game=usr.Game.TRIVIA)
             y = text_score.end_y + 50
             for score in score_board : 
-                user_text = text.format(score[1],font,50,y,400,(255,255,255))
-                scoreb_text = text.format(str(score[0]),font,450,y,100,(255,255,255))
+                user_text = text.format(score[1],font,50,y,400,txt_color)
+                scoreb_text = text.format(str(score[0]),font,450,y,100,txt_color)
                 text.render(screen,user_text)
                 text.render(screen,scoreb_text)
                 y = user_text.end_y + 10
         
         elif state == State.RESULT_GEO : 
-            text_score = text.format("Your score : " + str(final_score),question_font,300, 50, 250, (255,255,255))
+            text_score = text.format("Your score : " + str(final_score),question_font,300, 50, 250, txt_color)
             text.render(screen,text_score)
             score_board = usr.get_score_board(game=usr.Game.GEO)
             y = 250
             for score in score_board : 
-                user_text = text.format(score[1],font,15,y,125,(255,255,255))
-                scoreb_text = text.format(str(score[0]),font,140,y,100,(255,255,255))
+                user_text = text.format(score[1],font,15,y,125,txt_color)
+                scoreb_text = text.format(str(score[0]),font,140,y,100,txt_color)
                 text.render(screen,user_text)
                 text.render(screen,scoreb_text)
                 y = user_text.end_y + 10
