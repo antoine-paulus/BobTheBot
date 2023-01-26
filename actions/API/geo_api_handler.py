@@ -19,9 +19,9 @@ class GeoApiHandler:
         self.current_country_name = ""
         self.current_data_type = ""
         self.current_question = ""
-        self.current_answer = ""
-        self._current_answer_index = ""
-
+        self.current_answers = []
+        self.current_right_answer = ""
+        self._current_right_answer_index = ""
         self.user_name = user_name
 
 
@@ -69,13 +69,13 @@ class GeoApiHandler:
                 else:
                     response = country_data[self.current_data_type]
                     #To avoid dupplicated responses:
-                    if response not in responses and response not in ["", self.current_answer]:
+                    if response not in responses and response not in ["", self.current_right_answer]:
                         sampled_countries_name.append(country_data["name"])
                         #Generate a response
                         responses.append(country_data[self.current_data_type])
         #Insert the right response at a random index in the responses list:
-        self._current_answer_index = randint(0, NUM_RESPONSES - 1)
-        responses.insert(self._current_answer_index, self.current_answer)
+        self._current_right_answer_index = randint(0, NUM_RESPONSES - 1)
+        responses.insert(self._current_right_answer_index, self.current_right_answer)
         return responses
 
 
@@ -103,10 +103,10 @@ class GeoApiHandler:
                 if self.current_data_type == "flag":
                     self._get_country_flag(country_data["alpha3Code"])
                     self.current_question = "To which country does this flag belong?"
-                    self.current_answer = self.current_country_name
+                    self.current_right_answer = self.current_country_name
                 else:
                     self.current_question = f"What is the {self.current_data_type} of {self.current_country_name} ?"
-                    self.current_answer = country_data[self.current_data_type]
+                    self.current_right_answer = country_data[self.current_data_type]
         return (self.current_data_type, self.current_question)
 
 
@@ -118,6 +118,7 @@ class GeoApiHandler:
         choices_letter = ["A =", "B =", "C =", "D ="]
         for (i, letter) in enumerate(choices_letter):
             choices.append(f"{choices_letter[i]} {responses[i]}")
+        self.current_answers = choices
         return choices
 
 
@@ -126,12 +127,12 @@ class GeoApiHandler:
         according to if the response is correct or no"""
 
         choices_letter = ["RESPONSE A", "RESPONSE B", " RESPONSE C", "RESPONSE D"]
-        if given_answer.upper() in choices_letter[self._current_answer_index]:
+        if given_answer.upper() in choices_letter[self._current_right_answer_index]:
             users.increment_user_score(self.user_name, users.Game.GEO)
             return f"Congratulation, this is the good answer !"
             #return f"Congratulation, this is the good answer ! Your score is now of {users.get_user_score(self.user_name, users.Game.GEO)}"
         else:
-            return f"No sorry, the correct answer was {self.current_answer}"
+            return f"No sorry, the correct answer was {self.current_right_answer}"
 
 
 if __name__ == '__main__':

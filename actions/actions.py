@@ -72,16 +72,17 @@ class ActionAPI(Action):
 
         if regenerate :
             type, question = self.geoAPI.get_question()
+            answers = self.geoAPI.get_choices()
         else :
             type = self.geoAPI.current_data_type
             question = self.geoAPI.current_question
+            answers = self.geoAPI.current_answers
 
         if type == "flag":
             dispatcher.utter_message(text=question, image=FLAG_IMG_PATH)
         else:
             dispatcher.utter_message(text=question)
 
-        answers = self.geoAPI.get_choices()
         dispatcher.utter_message(text=f"{answers[0]}")
         dispatcher.utter_message(text=f"{answers[1]}")
         dispatcher.utter_message(text=f"{answers[2]}")
