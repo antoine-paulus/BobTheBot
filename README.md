@@ -5,4 +5,8 @@ This application is a chatbot created to provide cognitive interractions for eld
 
 To run this application you will need to install :
 
-pygame 
+* pygame 
+
+```
+python3 -m pip install -U pygame
+```
